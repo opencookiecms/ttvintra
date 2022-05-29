@@ -2,6 +2,7 @@
 from django.contrib import admin
 from django.urls import path, include, re_path
 
+from homebase import views
 from django.conf import settings
 from django.conf.urls.static import static
 from ms_identity_web.django.msal_views_and_urls import MsalViews
@@ -10,6 +11,7 @@ msal_urls = MsalViews(settings.MS_IDENTITY_WEB).url_patterns()
 
 urlpatterns = [
 
+    path('',views.index, name='index'),
     path('admin/', admin.site.urls),
     path(f'{settings.AAD_CONFIG.django.auth_endpoints.prefix}/', include(msal_urls)),   # our pre-configured msal URLs
 ]

@@ -133,3 +133,4 @@ dmypy.json
 
 #json filter
 aad.config.json
+db.sqlite3
