@@ -4,12 +4,12 @@ from django.db import models
 # Create your models here.
 class Travelinfo(models.Model):
     offid = models.CharField(max_length=200, null=True, blank=True)
-    company_name = models.CharField(max_length=150, null=True, blank=True)
+    companyname = models.CharField(max_length=150, null=True, blank=True)
     name = models.CharField(max_length=150, null=True, blank=True)
     emailname = models.CharField(max_length=150, null=True, blank=True)
     date = models.DateField(null=True, blank=True)
-    travel_purpose = models.CharField(max_length=200, null=True, blank=True)
-    customer_name = models.CharField(max_length=100, null=True, blank=True)
+    travelpurpose = models.CharField(max_length=200, null=True, blank=True)
+    customername = models.CharField(max_length=100, null=True, blank=True)
     projectcode = models.CharField(max_length=20, null=True, blank=True)
     destinations = models.CharField(max_length=150, null=True, blank=True)
     datearrive = models.DateField(null=True, blank=True)
@@ -30,11 +30,11 @@ class Travelinfo(models.Model):
     drstatus = models.CharField(max_length=10, null=True, blank=True)
     hodapproval = models.CharField(max_length=10, null=True, blank=True)
     hodemail = models.CharField(max_length=150, blank=True, null=True)
-    director_approval = models.CharField(max_length=150, null=True, blank=True)
+    directorapproval = models.CharField(max_length=150, null=True, blank=True)
     dremail = models.CharField(max_length=150, blank=True, null=True)
     createby = models.CharField(max_length=150, null=True, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True, editable=False)
-    updated_at = models.DateTimeField(auto_now=True, editable=False)
+    createdat = models.DateTimeField(auto_now_add=True, editable=False)
+    updatedat = models.DateTimeField(auto_now=True, editable=False)
 
 class AknowlegdeTicket(models.Model):
     transport = models.CharField(max_length=50, null=True, blank=True)
