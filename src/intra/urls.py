@@ -16,6 +16,7 @@ urlpatterns = [
 
 
     path('travelrequest/add', trviews.traveladd, name='traveladd'),
+    path('travelrequest/dashboard', trviews.dashboard, name='tvrdashboard'),
     path('admin/', admin.site.urls),
     path(f'{settings.AAD_CONFIG.django.auth_endpoints.prefix}/', include(msal_urls)),   # our pre-configured msal URLs
 ]

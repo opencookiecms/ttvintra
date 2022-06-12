@@ -32,7 +32,7 @@ class TravelRequestForm(forms.ModelForm):
 
     airlinepreferred = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Airline Preferred'}))
     seatingpreferred = forms.ChoiceField(choices=seeting, required=False, widget=forms.Select(attrs={'class':'form-select form-select-solid','data-control':'select2','data-hide-search':'true'}))
-    luggageneeded = forms.ChoiceField(choices=TRUE_FALSE_CHOICES, required=False, widget=forms.Select(attrs={'class':'form-control','placholder':'Luggage Needed'}))
+    
     luggageweight = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Weight of luggage (kg)'}))
     luggagereason = forms.CharField(required=False, widget=forms.Textarea(attrs={'class':'form-control', 'type':'text', 'placeholder':'Please state the reason', 'rows':'4'}))
     class Meta:

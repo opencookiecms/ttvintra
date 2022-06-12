@@ -1,11 +1,12 @@
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.conf import settings
-import json
 from trvrequest.forms import TravelRequestForm
 
 
 import requests
+
+from trvrequest.models import Travelinfo
 
 ms_identity_web = settings.MS_IDENTITY_WEB
 
@@ -23,7 +24,7 @@ def traveladd(request):
         if form.is_valid():
             form.save()
             form = TravelRequestForm
-            return redirect('')
+            return redirect('tvrdashboard')
         else:
             print(form.errors)
             print('fail to save the data')
@@ -34,3 +35,25 @@ def traveladd(request):
         'form':form
     }
     return render(request, 'pages/travelrequest/traveladd.html',context)
+
+@ms_identity_web.login_required
+def dashboard(request):
+
+    ms_identity_web.acquire_token_silently()
+    graphz = 'https://graph.microsoft.com/beta/me'
+    authz = f'Bearer {ms_identity_web.id_data._access_token}'
+    results = requests.get(graphz, headers={'Authorization':authz}).json()
+   
+
+    msid = results['id']
+    travelobj = Travelinfo.objects.filter(offid=msid)
+ 
+
+    context = {
+    
+        'obj':travelobj,
+        'profile':dict(results),
+        'traveldashboard':True,
+        'titlehead':'My Travel Request'
+    }
+    return render(request, 'pages/travelrequest/dashboard.html',context)

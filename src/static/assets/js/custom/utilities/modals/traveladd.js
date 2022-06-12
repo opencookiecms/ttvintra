@@ -5,6 +5,7 @@ var KTCreateAccount = (function () {
         i,
         o,
         s,
+       
         r,
         a = [];
     return {
@@ -30,7 +31,7 @@ var KTCreateAccount = (function () {
                                   "Valid" == t
                                       ? (e.goNext(), KTUtil.scrollTop())
                                       : Swal.fire({
-                                            text: "Sorry, looks like there are some errors detected, please try again.",
+                                            text: " again.",
                                             icon: "error",
                                             buttonsStyling: !1,
                                             confirmButtonText: "Ok, got it!",
@@ -46,16 +47,17 @@ var KTCreateAccount = (function () {
                 }),
                 a.push(
                     FormValidation.formValidation(i, {
-                        fields: { companyname: { validators: { notEmpty: { message: "Company are require" } } } },
+                        fields: { companyname: { validators: { notEmpty: { message: "Company Name is required" } } } },
                         plugins: { trigger: new FormValidation.plugins.Trigger(), bootstrap: new FormValidation.plugins.Bootstrap5({ rowSelector: ".fv-row", eleInvalidClass: "", eleValidClass: "" }) },
                     })
                 ),
                 a.push(
                     FormValidation.formValidation(i, {
                         fields: {
-                            name: { validators: { notEmpty: { message: "Your Name is require" } } },
-                            travelpurpose: { validators: { notEmpty: { message: "Where you want to travel exacly ?" } } },
-                            
+                            name: { validators: { notEmpty: { message: "Name is Required" } } },
+                            travelpurpose: { validators: { notEmpty: { message: "Why you want to travel, please describe" } } },
+                           
+                           
                         },
                         plugins: { trigger: new FormValidation.plugins.Trigger(), bootstrap: new FormValidation.plugins.Bootstrap5({ rowSelector: ".fv-row", eleInvalidClass: "", eleValidClass: "" }) },
                     })
@@ -63,11 +65,10 @@ var KTCreateAccount = (function () {
                 a.push(
                     FormValidation.formValidation(i, {
                         fields: {
-                            destinations: { validators: { notEmpty: { message: "Please provide your destination" } } },
-                            business_descriptor: { validators: { notEmpty: { message: "Busines descriptor is required" } } },
-                            business_type: { validators: { notEmpty: { message: "Busines type is required" } } },
-                            business_description: { validators: { notEmpty: { message: "Busines description is required" } } },
-                            business_email: { validators: { notEmpty: { message: "Busines email is required" }, emailAddress: { message: "The value is not a valid email address" } } },
+                            destinations: { validators: { notEmpty: { message: "Your Destination ?" } } },
+                            datearrive: { validators: { notEmpty: { message: "When you want start travel" } } },
+                            datereturn: { validators: { notEmpty: { message: "Estimate date you want to return" } } },
+      
                         },
                         plugins: { trigger: new FormValidation.plugins.Trigger(), bootstrap: new FormValidation.plugins.Bootstrap5({ rowSelector: ".fv-row", eleInvalidClass: "", eleValidClass: "" }) },
                     })
@@ -75,48 +76,116 @@ var KTCreateAccount = (function () {
                 a.push(
                     FormValidation.formValidation(i, {
                         fields: {
-                            card_name: { validators: { notEmpty: { message: "Name on card is required" } } },
-                            card_number: { validators: { notEmpty: { message: "Card member is required" }, creditCard: { message: "Card number is not valid" } } },
-                            card_expiry_month: { validators: { notEmpty: { message: "Month is required" } } },
-                            card_expiry_year: { validators: { notEmpty: { message: "Year is required" } } },
-                            card_cvv: { validators: { notEmpty: { message: "CVV is required" }, digits: { message: "CVV must contain only digits" }, stringLength: { min: 3, max: 4, message: "CVV must contain 3 to 4 digits only" } } },
+                         
+                           
                         },
                         plugins: { trigger: new FormValidation.plugins.Trigger(), bootstrap: new FormValidation.plugins.Bootstrap5({ rowSelector: ".fv-row", eleInvalidClass: "", eleValidClass: "" }) },
                     })
                 ),
-                o.addEventListener("click", function (e) {
-                    a[5].validate().then(function (t) {
-                        console.log("validated!"),
-                            "Valid" == t
-                                ? (e.preventDefault(),
-                                  (o.disabled = !0),
-                                  o.setAttribute("data-kt-indicator", "on"),
-                                  setTimeout(function () {
-                                      o.removeAttribute("data-kt-indicator"), (o.disabled = !1), r.goNext();
-                                  }, 2e3))
-                                : Swal.fire({
-                                      text: "Sorry, looks like there are some errors detected, please try again.",
-                                      icon: "error",
-                                      buttonsStyling: !1,
-                                      confirmButtonText: "Ok, got it!",
-                                      customClass: { confirmButton: "btn btn-light" },
-                                  }).then(function () {
-                                      KTUtil.scrollTop();
-                                  });
-                    });
+                a.push(
+                    FormValidation.formValidation(i, {
+                        fields: {
+                            hotelneeded: { validators: { notEmpty: { message: "Yes or No ?" } } },
+                            numbernights: { validators: { notEmpty: { message: "No of night ?" } } },
+                           
+                        },
+                        plugins: { trigger: new FormValidation.plugins.Trigger(), bootstrap: new FormValidation.plugins.Bootstrap5({ rowSelector: ".fv-row", eleInvalidClass: "", eleValidClass: "" }) },
+                    })
+                ),
+                a.push(
+                    FormValidation.formValidation(i, {
+                        fields: {
+                            hodapproval: { validators: { notEmpty: { message: "oops!! You need the HOD Approval" } } },
+                            directorapproval: { validators: { notEmpty: { message: "oops!! You aslo need Director Approval" } } },
+                           
+                        },
+                        plugins: { trigger: new FormValidation.plugins.Trigger(), bootstrap: new FormValidation.plugins.Bootstrap5({ rowSelector: ".fv-row", eleInvalidClass: "", eleValidClass: "" }) },
+                    })
+                ),
+
+                
+
+                o.addEventListener('click', function (e) {
+                    // Prevent default button action
+                    e.preventDefault();
+                    
+                  
+                    if (a) {
+                        a[5].validate().then(function (status) {
+                            console.log('validated!');
+                
+                            if (status == 'Valid') {
+                                // Show loading indication
+                                o.setAttribute('data-kt-indicator', 'on');
+                
+                                // Disable button to avoid multiple click
+                                o.disabled = true;
+                
+                                // Simulate form submission. For more info check the plugin's official documentation: https://sweetalert2.github.io/
+                                setTimeout(function () {
+                                    // Remove loading indication
+                                    o.removeAttribute('data-kt-indicator');
+                
+                                    // Enable button
+                                    o.disabled = false;
+                
+                                    // Show popup confirmation
+                                    Swal.fire({
+                                        text: "Form has been successfully submitted!",
+                                        icon: "success",
+                                        buttonsStyling: false,
+                                        confirmButtonText: "Ok, got it!",
+                                        customClass: {
+                                            confirmButton: "btn btn-primary"
+                                        }
+                                    }).then(function (result){
+                                        if(result.value === true){
+                                        
+                                       
+                                        i.submit();
+                                        o.removeAttribute("data-kt-indicator"), (o.disabled = !1), r.goNext();
+                                        console.log("Submitted");
+                                        
+                                        }else{
+                                            console.log("failed");
+                                        
+                                       
+                                      }
+                                    });
+                
+                                    //form.submit(); // Submit form
+                                },2e3);
+                            }
+                            else{
+                                Swal.fire({
+                                    text: "Sorry, looks like there are some errors detected, please try again.",
+                                    icon: "error",
+                                    buttonsStyling: !1,
+                                    confirmButtonText: "Ok, got it!",
+                                    customClass: { confirmButton: "btn btn-primary" },
+                                });
+                            }
+                        });
+                    }
                 }),
-                $(i.querySelector('[name="card_expiry_month"]')).on("change", function () {
-                    a[3].revalidateField("card_expiry_month");
+                
+               
+                $(i.querySelector('[name="hodapproval"]')).on("change", function () {
+                    a[5].revalidateField("hodapproval");
                 }),
-                $(i.querySelector('[name="card_expiry_year"]')).on("change", function () {
-                    a[3].revalidateField("card_expiry_year");
-                }),
-                $(i.querySelector('[name="business_type"]')).on("change", function () {
-                    a[2].revalidateField("business_type");
+                $(i.querySelector('[name="director"]')).on("change", function () {
+                    a[5].revalidateField("director");
                 });
+   
         },
     };
 })();
+
+
+
 KTUtil.onDOMContentLoaded(function () {
     KTCreateAccount.init();
 });
+
+
+
