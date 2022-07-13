@@ -47,6 +47,10 @@ def dashboard(request):
 
     msid = results['id']
     travelobj = Travelinfo.objects.filter(offid=msid)
+    total = Travelinfo.objects.filter(offid=msid).count()
+    new = Travelinfo.objects.filter(offid=msid,status="New").count()
+    pending = Travelinfo.objects.filter(offid=msid,status="Pending").count()
+    decline = Travelinfo.objects.filter(offid=msid,status="Decline").count()
  
 
     context = {
@@ -54,6 +58,11 @@ def dashboard(request):
         'obj':travelobj,
         'profile':dict(results),
         'traveldashboard':True,
-        'titlehead':'My Travel Request'
+        'titlehead':'My Travel Request',
+        'total':total,
+        'new':new,
+        'pending':pending,
+        'decline':decline,
+
     }
     return render(request, 'pages/travelrequest/dashboard.html',context)
