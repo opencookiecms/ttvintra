@@ -4,6 +4,7 @@ from django.db import models
 from django.conf import settings
 from django.db.models import Q
 from trvrequest.models import Travelinfo, AknowlegdeTicket
+from homebase.models import Specialuser
 
 from intra.settings import DATE_INPUT_FORMAT
 
@@ -37,6 +38,18 @@ class TravelRequestForm(forms.ModelForm):
     luggageweight = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Weight of luggage (kg)'}))
     luggagereason = forms.CharField(required=False, widget=forms.Textarea(attrs={'class':'form-control', 'type':'text', 'placeholder':'Please state the reason', 'rows':'4'}))
 
+
+    numbernights = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Number of Nights'}))
+    hotellocation = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'type':'text', 'placeholder':'Hotel location'}))
+    hodapproval = forms.ModelChoiceField(required=False, queryset=Specialuser.objects.filter(Q(position='HOD') | Q(position='Manager')), widget=forms.Select(attrs={'class':'form-control'}))
+    directorapproval = forms.ModelChoiceField(required=False, queryset=Specialuser.objects.filter(Q(position='Director')), widget=forms.Select(attrs={'class':'form-control'}))
+    status = forms.CharField(required=False, widget=forms.HiddenInput(attrs={'class':'form-control','placeholder':'Remarks','value':'New'}))
+
+    
+    issuetref = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Remarks','value':'Ticket Reference'}))
+    issuetype = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Remarks','value':'Ticket Type'}))
+    issuetdate = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Remarks','value':'Ticket Date'}))
+
     #hodapproval = forms.ModelChoiceField(required=False, queryset=Specialuser.objects.filter(Q(position='HOD') | Q(position='Manager')), widget=forms.Select(attrs={'class':'form-control'}))
     #directorapproval = forms.ModelChoiceField(required=False, queryset=Specialuser.objects.filter(Q(position='Director')), widget=forms.Select(attrs={'class':'form-control'}))
     class Meta:
@@ -68,4 +81,32 @@ class TravelRequestForm(forms.ModelForm):
             'hodemail', 
             'directorapproval', 
             'dremail', 
+        ]
+
+
+class TicketForm(forms.ModelForm):
+
+    transportsw = (
+        ('None', 'Select the transport'),
+        ('Car', 'Car'),
+        ('Bus', 'Bus'),
+        ('Flight', 'Flight'),
+        ('Train', 'Train'),
+    )
+
+    transport = forms.ChoiceField(choices=transportsw, required=False, widget=forms.Select(attrs={'class':'form-select form-select-solid','data-control':'select2','data-hide-search':'true'}))
+    issuetref = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Reference ticket number'}))
+    issuetdate = forms.DateField(input_formats=DATE_INPUT_FORMAT, required=False, widget=forms.DateInput(attrs={'class':'form-control'}))
+    issuelink = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Reference ticket number link'}))
+    issuefile = forms.FileField(required=False)
+    class Meta:
+        model = AknowlegdeTicket
+        fields = [
+            'transport', 
+            'issuetref',
+            'issuetdate', 
+            'issuelink',
+            'issuefile', 
+            'createby', 
+            'issuerelate',
         ]

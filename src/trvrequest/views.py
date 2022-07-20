@@ -1,7 +1,8 @@
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.conf import settings
-from trvrequest.forms import TravelRequestForm
+from trvrequest.forms import TicketForm, TravelRequestForm
+from django.core import serializers
 
 
 import requests
@@ -58,7 +59,7 @@ def dashboard(request):
         'obj':travelobj,
         'profile':dict(results),
         'traveldashboard':True,
-        'titlehead':'My Travel Request',
+        'titlehead':'TT Vision - My Travel Request',
         'total':total,
         'new':new,
         'pending':pending,
@@ -66,3 +67,53 @@ def dashboard(request):
 
     }
     return render(request, 'pages/travelrequest/dashboard.html',context)
+
+@ms_identity_web.login_required
+def traveloverview(request, id):
+
+    ms_identity_web.acquire_token_silently()
+    graphz = 'https://graph.microsoft.com/beta/me'
+    authz = f'Bearer {ms_identity_web.id_data._access_token}'
+    results = requests.get(graphz, headers={'Authorization':authz}).json()
+
+    travel = Travelinfo.objects.get(id=id)
+
+    context = {
+        'profile':dict(results),
+        'overview':True,
+        'titlehead':'Travel Request Details',
+        'travel':travel
+    }
+    return render(request, 'pages/travelrequest/overview.html',context)
+
+def ticketissue(request, id):
+
+    ms_identity_web.acquire_token_silently()
+    graphz = 'https://graph.microsoft.com/beta/me'
+    authz = f'Bearer {ms_identity_web.id_data._access_token}'
+    results = requests.get(graphz, headers={'Authorization':authz}).json()
+
+    travel = Travelinfo.objects.get(id=id)
+
+    form = TicketForm(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            form = TicketForm()
+        else:
+            print('failed')
+
+
+    context = {
+        'akticket':True,
+        'profile':dict(results),
+        'overview':True,
+        'titlehead':'Travel Request Details',
+        'travel':travel,
+        'form':form,
+    }
+    
+    return render(request, 'pages/ticket/ticketissue.html',context)
+
+
+

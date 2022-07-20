@@ -13,10 +13,16 @@ msal_urls = MsalViews(settings.MS_IDENTITY_WEB).url_patterns()
 urlpatterns = [
 
     path('',views.index, name='index'),
+    path('prereg', views.prereg, name='prereg'),
+    path('acknowledgement/travel/<int:id>', trviews.ticketissue, name="akticket"),
+
+    path('loadmailhod', views.loademailhod, name="hodmail"),
+    path('loadmaindirector', views.loademaildirector, name="drdmail"),
 
 
     path('travelrequest/add', trviews.traveladd, name='traveladd'),
     path('travelrequest/dashboard', trviews.dashboard, name='tvrdashboard'),
+    path('travelrequest/overview/<int:id>',trviews.traveloverview, name='overview'),
     path('admin/', admin.site.urls),
     path(f'{settings.AAD_CONFIG.django.auth_endpoints.prefix}/', include(msal_urls)),   # our pre-configured msal URLs
 ]

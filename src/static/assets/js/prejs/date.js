@@ -2,6 +2,7 @@
 
 
 $("#id_request_date").flatpickr();
+$("#id_issuetdate").flatpickr();
 $("#id_shipment_date").flatpickr();
 $("#id_date").flatpickr({
     defaultDate: "today",

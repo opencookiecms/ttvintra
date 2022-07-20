@@ -28,7 +28,7 @@ class Travelinfo(models.Model):
     status = models.CharField(max_length=10, null=True, blank=True)
     hodstatus = models.CharField(max_length=10, null=True, blank=True)
     drstatus = models.CharField(max_length=10, null=True, blank=True)
-    hodapproval = models.CharField(max_length=10, null=True, blank=True)
+    hodapproval = models.CharField(max_length=150, null=True, blank=True)
     hodemail = models.CharField(max_length=150, blank=True, null=True)
     directorapproval = models.CharField(max_length=150, null=True, blank=True)
     dremail = models.CharField(max_length=150, blank=True, null=True)
@@ -39,14 +39,12 @@ class Travelinfo(models.Model):
 class AknowlegdeTicket(models.Model):
     transport = models.CharField(max_length=50, null=True, blank=True)
     issuetref = models.CharField(max_length=150, null=True, blank=True)
-    issuetype = models.CharField(max_length=150, null=True, blank=True)
+  
     issuetdate = models.DateField(null=True, blank=True)
-    issuetdestination = models.CharField(max_length=150, null=True, blank=True)
+  
     issuelink = models.CharField(max_length=250, null=True, blank=True)
+    issuefile = models.FileField(null=True, blank=True)
 
-    carchoose = models.CharField(max_length=50, null=True, blank=True)
-    cartype = models.CharField(max_length=50, null=True, blank=True)
-    carplateno= models.CharField(max_length=50, null=True, blank=True)
 
     createby = models.CharField(max_length=150, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)

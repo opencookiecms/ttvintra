@@ -1,0 +1,46 @@
+
+					{% extends 'based/based.html' %}
+                    {% load static %}
+                    {% block content %}
+                    <!--begin::Content-->
+					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+						<!--begin::Post-->
+						<div class="post d-flex flex-column-fluid" id="kt_post">
+							<!--begin::Container-->
+							<div id="kt_content_container" class="container-xxl">
+								<!--begin::Card-->
+								<div class="card">
+									<!--begin::Card body-->
+									<div class="card-body">
+										<!--begin::Heading-->
+										<div class="card-px text-center pt-15 pb-15">
+											<!--begin::Title-->
+											<h2 class="fs-2x fw-bolder mb-0">Ticket Aknowledgment </h2>
+											<!--end::Title-->
+											<!--begin::Description-->
+											<p class="text-gray-400 fs-4 fw-bold py-7">Please update the ticket in here if have.
+											<br />Please click the button below.</p>
+											<!--end::Description-->
+											<!--begin::Action-->
+											<a href="#" class="btn btn-primary er fs-6 px-8 py-4" data-bs-toggle="modal" data-bs-target="#kt_modal_new_target">Let Gets Start it</a>
+											<!--end::Action-->
+										</div>
+										<!--end::Heading-->
+										<!--begin::Illustration-->
+										<div class="text-center pb-15 px-5">
+											<img src="{% static 'assets/media/illustrations/sketchy-1/15.png' %}" alt="" class="mw-100 h-200px h-sm-325px" />
+										</div>
+										<!--end::Illustration-->
+									</div>
+									<!--end::Card body-->
+								</div>
+								<!--end::Card-->
+							</div>
+							<!--end::Container-->
+						</div>
+						<!--end::Post-->
+					</div>
+					<!--end::Content-->
+					{% include "pages/ticket/ticketmodal.html" %}
+                    {% endblock content %}
+					

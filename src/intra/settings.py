@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'intra.wsgi.application'
 DATABASES = {
    'default':{
        'ENGINE':'mssql',
-       'NAME':'ttvdataset',
+       'NAME':'ttvadm',
        'USER':'root',
        'PASSWORD':'123456',
        'HOST':'DESKTOP-MER2ENS\SQLEXPRESS',
