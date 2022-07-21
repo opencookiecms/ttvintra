@@ -23,7 +23,8 @@
 					<!--begin::Modal body-->
 					<div class="modal-body scroll-y px-10 px-lg-15 pt-0 pb-15">
 						<!--begin:Form-->
-						<form id="kt_modal_new_target_form" class="form" action="#">
+						<form id="kt_modal_new_target_form" class="form" action="" method="POST">
+							{% csrf_token %}
 							<!--begin::Heading-->
 							<div class="mb-13 text-center">
 								<!--begin::Title-->
@@ -75,6 +76,8 @@
                                 {{form.issuefile}}
                             </div>
                             <!--end::Input group-->
+							<input type="hidden" name="{{form.issuerelate.name}}" value="{{travel.id}}"/>
+							<input type="hidden" name="{{form.issuerelate.createby}}" value="{{profile.displayName}}"/>
 							
 							
 							<!--begin::Actions-->

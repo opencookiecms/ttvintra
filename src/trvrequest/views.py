@@ -1,13 +1,13 @@
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.conf import settings
-from trvrequest.forms import TicketForm, TravelRequestForm
+from trvrequest.forms import TicketForm, TravelRequestForm, TraveleditForm
 from django.core import serializers
 
 
 import requests
 
-from trvrequest.models import Travelinfo
+from trvrequest.models import AknowlegdeTicket, Travelinfo
 
 ms_identity_web = settings.MS_IDENTITY_WEB
 
@@ -77,15 +77,19 @@ def traveloverview(request, id):
     results = requests.get(graphz, headers={'Authorization':authz}).json()
 
     travel = Travelinfo.objects.get(id=id)
+    ticked = AknowlegdeTicket.objects.filter(id=id).first()
+
 
     context = {
         'profile':dict(results),
         'overview':True,
         'titlehead':'Travel Request Details',
-        'travel':travel
+        'travel':travel,
+        'ticked':ticked
     }
     return render(request, 'pages/travelrequest/overview.html',context)
 
+@ms_identity_web.login_required
 def ticketissue(request, id):
 
     ms_identity_web.acquire_token_silently()
@@ -94,6 +98,7 @@ def ticketissue(request, id):
     results = requests.get(graphz, headers={'Authorization':authz}).json()
 
     travel = Travelinfo.objects.get(id=id)
+    ticket = AknowlegdeTicket.objects.filter(id=id).first()
 
     form = TicketForm(request.POST or None)
     if request.method == 'POST':
@@ -111,9 +116,41 @@ def ticketissue(request, id):
         'titlehead':'Travel Request Details',
         'travel':travel,
         'form':form,
+        'ticked':ticket,
     }
     
     return render(request, 'pages/ticket/ticketissue.html',context)
+
+@ms_identity_web.login_required
+def travelmodified(request, id):
+
+    
+    ms_identity_web.acquire_token_silently()
+    graphz = 'https://graph.microsoft.com/beta/me'
+    authz = f'Bearer {ms_identity_web.id_data._access_token}'
+    results = requests.get(graphz, headers={'Authorization':authz}).json()
+
+    travel = Travelinfo.objects.get(id=id)
+
+    dataobject = travel
+
+    form = TraveleditForm(request.POST or None, instance=dataobject)
+    if form.is_valid():
+        form.save()
+        form = TraveleditForm()
+        return redirect('tvrdashboard')
+    else:
+        print('failed')
+
+    context = {
+        'editravel':True,
+        'travel':travel,
+        'profile':dict(results),
+        'titlehead':'Travel Request Edit',
+        'form':form
+    }
+
+    return render(request, 'pages/travelrequest/modified.html',context)
 
 
 

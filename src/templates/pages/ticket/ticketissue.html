@@ -15,15 +15,20 @@
 										<!--begin::Heading-->
 										<div class="card-px text-center pt-15 pb-15">
 											<!--begin::Title-->
-											<h2 class="fs-2x fw-bolder mb-0">Ticket Aknowledgment </h2>
+											<h2 class="fs-2x fw-bolder mb-0">Ticket Aknowledgment</h2>
 											<!--end::Title-->
 											<!--begin::Description-->
 											<p class="text-gray-400 fs-4 fw-bold py-7">Please update the ticket in here if have.
 											<br />Please click the button below.</p>
 											<!--end::Description-->
 											<!--begin::Action-->
-											<a href="#" class="btn btn-primary er fs-6 px-8 py-4" data-bs-toggle="modal" data-bs-target="#kt_modal_new_target">Let Gets Start it</a>
+										
+											{% if ticked.id == travel.id %}
+											<h3 class="fs-2x fw-bolder mb-0">This acknowledgment already created Thank You </h3>
+											{% elif ticked.id != travel.id %}
+											<a href="#" class="btn btn-primary er fs-6 px-8 py-4" data-bs-toggle="modal" data-bs-target="#kt_modal_new_target">Let get start it</a>
 											<!--end::Action-->
+											{% endif %}
 										</div>
 										<!--end::Heading-->
 										<!--begin::Illustration-->

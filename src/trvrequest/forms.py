@@ -84,6 +84,28 @@ class TravelRequestForm(forms.ModelForm):
         ]
 
 
+class TraveleditForm(forms.ModelForm):
+
+    travelpurpose = forms.CharField(required=False, widget=forms.Textarea(attrs={'class':'form-control', 'type':'text', 'placeholder':'Travel Purpose', 'rows':'4'}))
+    customername = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Remarks','value':'Ticket Reference'}))
+    projectcode = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Remarks','value':'Ticket Reference'}))
+    destinations = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Remarks','value':'Ticket Reference'}))
+    datereturn = forms.DateField(input_formats=DATE_INPUT_FORMAT, required=False, widget=forms.DateInput(attrs={'class':'form-control'}))
+    
+    class Meta:
+        model = Travelinfo
+        fields = [
+           
+         
+            'travelpurpose',
+            'customername', 
+            'projectcode',
+            'destinations',
+            'datereturn', 
+         
+        ]
+
+
 class TicketForm(forms.ModelForm):
 
     transportsw = (

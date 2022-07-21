@@ -1,0 +1,135 @@
+
+					{% extends 'based/based.html' %}
+                    {% load static %}
+                    {% block content %}
+                    <!--begin::Content-->
+					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+						<!--begin::Post-->
+						<div class="post d-flex flex-column-fluid" id="kt_post">
+							<!--begin::Container-->
+							<div id="kt_content_container" class="container-xxl">
+								<form id="kt_ecommerce_add_category_form" class="form d-flex flex-column flex-lg-row" action="" method="POST">
+                                    {% csrf_token %}
+									<!--begin::Aside column-->
+									<div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
+										
+										<!--begin::Status-->
+										<div class="card card-flush py-4">
+											<!--begin::Card header-->
+											<div class="card-header">
+												<!--begin::Card title-->
+												<div class="card-title">
+													<h2>Return Date</h2>
+												</div>
+												<!--end::Card title-->
+											
+											</div>
+											<!--end::Card header-->
+											<!--begin::Card body-->
+											<div class="card-body pt-0">
+												<!--begin::Select2-->
+											{{form.datereturn}}
+												<!--end::Select2-->
+												<!--begin::Description-->
+												<div class="text-muted fs-7">Project Code.</div>
+												<!--end::Description-->
+									
+											</div>
+											<!--end::Card body-->
+										</div>
+										<!--end::Status-->
+								
+									</div>
+									<!--end::Aside column-->
+									<!--begin::Main column-->
+									<div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
+										<!--begin::General options-->
+										<div class="card card-flush py-4">
+											<!--begin::Card header-->
+											<div class="card-header">
+												<div class="card-title">
+													<h2>General</h2>
+												</div>
+											</div>
+											<!--end::Card header-->
+											<!--begin::Card body-->
+											<div class="card-body pt-0">
+												<!--begin::Input group-->
+												<div class="mb-10 fv-row">
+													<!--begin::Label-->
+													<label class="required form-label">Project Code</label>
+													<!--end::Label-->
+													<!--begin::Input-->
+													{{form.projectcode}}
+													<!--end::Input-->
+													<!--begin::Description-->
+													
+													<!--end::Description-->
+												</div>
+												<!--end::Input group-->
+												<!--begin::Input group-->
+												<div>
+													<!--begin::Label-->
+													<label class="form-label">Customer Name</label>
+													<!--end::Label-->
+													<!--begin::Editor-->
+													{{form.customername}}
+													<!--end::Editor-->
+													<!--begin::Description-->
+													<div class="text-muted fs-7">Set a description to the category for better visibility.</div>
+													<!--end::Description-->
+												</div>
+												<!--end::Input group-->
+                                                	<!--begin::Input group-->
+												<div>
+													<!--begin::Label-->
+													<label class="form-label">Travel Purpose</label>
+													<!--end::Label-->
+													<!--begin::Editor-->
+													{{form.travelpurpose}}
+													<!--end::Editor-->
+													<!--begin::Description-->
+													<div class="text-muted fs-7">Set a description to the category for better visibility.</div>
+													<!--end::Description-->
+												</div>
+												<!--end::Input group-->
+                                                       	<!--begin::Input group-->
+												<div>
+													<!--begin::Label-->
+													<label class="form-label">Destination</label>
+													<!--end::Label-->
+													<!--begin::Editor-->
+													{{form.destinations}}
+													<!--end::Editor-->
+													<!--begin::Description-->
+													
+													<!--end::Description-->
+												</div>
+												<!--end::Input group-->
+											</div>
+											<!--end::Card header-->
+										</div>
+										<!--end::General options-->
+								
+										<div class="d-flex justify-content-end">
+											<!--begin::Button-->
+											<a href="../../demo8/dist/apps/ecommerce/catalog/products.html" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">Cancel</a>
+											<!--end::Button-->
+											<!--begin::Button-->
+											<button type="submit" id="kt_ecommerce_add_category_submit" class="btn btn-primary">
+												<span class="indicator-label">Save Changes</span>
+												<span class="indicator-progress">Please wait...
+												<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+											</button>
+											<!--end::Button-->
+										</div>
+									</div>
+									<!--end::Main column-->
+								</form>
+							</div>
+							<!--end::Container-->
+						</div>
+						<!--end::Post-->
+					</div>
+					<!--end::Content-->
+					{% endblock content %}
