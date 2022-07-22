@@ -41,7 +41,7 @@ class TravelRequestForm(forms.ModelForm):
 
     numbernights = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Number of Nights'}))
     hotellocation = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'type':'text', 'placeholder':'Hotel location'}))
-    hodapproval = forms.ModelChoiceField(required=False, queryset=Specialuser.objects.filter(Q(position='HOD') | Q(position='Manager')), widget=forms.Select(attrs={'class':'form-control'}))
+    hodapproval = forms.ModelChoiceField(required=False, queryset=Specialuser.objects.filter(Q(position='HOD') | Q(position='Director')), widget=forms.Select(attrs={'class':'form-control'}))
     directorapproval = forms.ModelChoiceField(required=False, queryset=Specialuser.objects.filter(Q(position='Director')), widget=forms.Select(attrs={'class':'form-control'}))
     status = forms.CharField(required=False, widget=forms.HiddenInput(attrs={'class':'form-control','placeholder':'Remarks','value':'New'}))
 
