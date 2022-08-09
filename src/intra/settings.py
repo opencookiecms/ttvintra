@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-@+(msxey(!#4z&x(2lmv2&cpt$r=&1@xyt5*u6*j64j!pf74d&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost','10.10.150.57','hub.ttvision.intranet','www.hub.ttvision.intranet']
 
 
 # Application definition
@@ -83,7 +83,7 @@ DATABASES = {
        'NAME':'ttvadm',
        'USER':'root',
        'PASSWORD':'123456',
-       'HOST':'DESKTOP-MER2ENS\SQLEXPRESS',
+       'HOST':'10.10.150.145\SQLEXPRESS',
        'OPTION':{
            'drive':'ODBC Driver 17 for SQL Server',
        },
