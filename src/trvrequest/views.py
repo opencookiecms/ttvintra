@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.conf import settings
+from homebase.models import ApplicationPerm
 from trvrequest.forms import TicketForm, TravelRequestForm, TraveleditForm
 from django.core import serializers
 
@@ -47,23 +48,33 @@ def dashboard(request):
    
 
     msid = results['id']
+    email = results['mail']
+    admintravel = ApplicationPerm.objects.filter(userlink__mailaddress=email).first()
+    traveall = Travelinfo.objects.all().count()
     travelobj = Travelinfo.objects.filter(offid=msid)
+    travelsub = Travelinfo.objects.filter(hodemail=email).filter(dremail=email)
     total = Travelinfo.objects.filter(offid=msid).count()
     new = Travelinfo.objects.filter(offid=msid,status="New").count()
     pending = Travelinfo.objects.filter(offid=msid,status="Pending").count()
     decline = Travelinfo.objects.filter(offid=msid,status="Decline").count()
- 
+    subo = Travelinfo.objects.filter(hodemail=email, status="New").filter(dremail=email).count()
+
+    print(admintravel)
 
     context = {
     
         'obj':travelobj,
+        'obj2':travelsub,
         'profile':dict(results),
         'traveldashboard':True,
         'titlehead':'TT Vision - My Travel Request',
         'total':total,
+        'subo':subo,
         'new':new,
         'pending':pending,
         'decline':decline,
+        'appperm':admintravel,
+        'totalall':traveall,
 
     }
     return render(request, 'pages/travelrequest/dashboard.html',context)
@@ -151,6 +162,28 @@ def travelmodified(request, id):
     }
 
     return render(request, 'pages/travelrequest/modified.html',context)
+
+
+@ms_identity_web.login_required
+def approval(request, id):
+
+    ms_identity_web.acquire_token_silently()
+    graphz = 'https://graph.microsoft.com/beta/me'
+    authz = f'Bearer {ms_identity_web.id_data._access_token}'
+    results = requests.get(graphz, headers={'Authorization':authz}).json()
+
+    travel = Travelinfo.objects.get(id=id)
+    ticked = AknowlegdeTicket.objects.filter(id=id).first()
+
+
+    context = {
+        'profile':dict(results),
+        'overview':True,
+        'titlehead':'Travel Request Details',
+        'travel':travel,
+        'ticked':ticked
+    }
+    return render(request, 'pages/travelrequest/overviewapproval.html',context)
 
 
 

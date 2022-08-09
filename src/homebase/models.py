@@ -18,6 +18,9 @@ class Userprofile(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
 
+    def __str__(self):
+        return self.displayname
+
 
 class Specialuser(models.Model):
     specialname = models.CharField(max_length=150, null=True, blank=True)
@@ -30,7 +33,10 @@ class Specialuser(models.Model):
 
 class ApplicationPerm(models.Model):
     
-    travelrequest = models.CharField(max_length=20, null=True, blank=True) 
-    shipmentrequest = models.CharField(max_length=20, null=True, blank=True)
-    ncar  = models.CharField(max_length=20, null=True, blank=True)
+    travelrequest = models.BooleanField()
+    shipmentrequest = models.BooleanField()
+    ncar  = models.BooleanField()
     userlink = models.ForeignKey(Userprofile, blank=True, null=True,on_delete = models.SET_NULL)
+
+    def __str__(self):
+        return self.userlink.displayname
