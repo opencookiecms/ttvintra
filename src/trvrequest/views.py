@@ -4,7 +4,7 @@ from django.conf import settings
 from homebase.models import ApplicationPerm
 from trvrequest.forms import TicketForm, TravelRequestForm, TraveleditForm
 from django.core import serializers
-
+from django.db.models import Q
 
 import requests
 
@@ -52,7 +52,7 @@ def dashboard(request):
     admintravel = ApplicationPerm.objects.filter(userlink__mailaddress=email).first()
     traveall = Travelinfo.objects.all().count()
     travelobj = Travelinfo.objects.filter(offid=msid)
-    travelsub = Travelinfo.objects.filter(hodemail=email).filter(dremail=email)
+    travelsub = Travelinfo.objects.filter(Q(hodemail=email) | Q(dremail=email))
     total = Travelinfo.objects.filter(offid=msid).count()
     new = Travelinfo.objects.filter(offid=msid,status="New").count()
     pending = Travelinfo.objects.filter(offid=msid,status="Pending").count()
