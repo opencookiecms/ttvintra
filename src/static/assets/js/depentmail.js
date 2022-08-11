@@ -5,7 +5,7 @@ $(document).ready(function(){
         console.log(id);
         if(id != ''){
             $.ajax({
-                url:"http://localhost:8000/loadmailhod",
+                url:"https://10.10.150.57/loadmailhod",
                 method:'GET',
                 data : {id:id},
                 success:function(data){
@@ -21,7 +21,7 @@ $(document).ready(function(){
         console.log(id);
         if(id != ''){
             $.ajax({
-                url:"http://localhost:8000/loadmaindirector",
+                url:"https://10.10.150.57/loadmaindirector",
                 method:'GET',
                 data : {id:id},
                 success:function(data){
