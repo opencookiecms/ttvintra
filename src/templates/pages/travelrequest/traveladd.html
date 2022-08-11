@@ -147,7 +147,7 @@
 													<div class="pb-10 pb-lg-15">
 														<!--begin::Title-->
 														<h2 class="fw-bolder d-flex align-items-center text-dark">Company Name
-														<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Billing is issued based on your selected account type"></i></h2>
+														
 														<!--end::Title-->
 													
 													</div>
@@ -230,7 +230,7 @@
 														<label class="fs-6 fw-bold form-label mb-2">Requester Name</label>
 														<!--end::Label-->
 														<!--begin::Input-->
-														<input type="text" class="form-control form-control-lg form-control-solid" name="{{form.name.name}}" placeholder="{{profile.displayName}}" value="{{profile.displayName}}" />
+														<input type="text" class="form-control form-control-lg form-control-solid" name="{{form.name.name}}" placeholder="{{profile.displayName}}" value="{{profile.displayName}}" readonly/>
 														<input type="hidden" name="{{form.offid.name}}" value="{{profile.id}}">
 														<input type="hidden" name="{{form.emailname.name}}" value="{{profile.mail}}">
 														<!--end::Input-->
@@ -252,7 +252,7 @@
 														<div class="col-md-6 fv-row">
 															<!--begin::Label-->
 															<label class="fs-6 fw-bold form-label mb-2">
-																Work Code
+																Work Order
 															</label>
 															{{form.projectcode}}
 														</div>
@@ -397,9 +397,7 @@
 														<!--begin::Label-->
 														<label class="required d-flex align-items-center form-label mb-3">
 															Choose the transport
-															<i class="fas fa-exclamation-circle ms-2 fs-7"
-															   data-bs-toggle="tooltip"
-															   title=""></i>
+														
 														</label>
 														<!--end::Label-->
 														<!--begin::Row-->
@@ -608,9 +606,7 @@
 																<!--begin::Label-->
 																<label class="form-label">
 																	<span class="">Hotel Needed</span>
-																	<i class="fas fa-exclamation-circle ms-2 fs-7"
-																	   data-bs-toggle="tooltip"
-																	   title="Your billing numbers will be calculated based on your API method"></i>
+																
 																</label>
 															</div>
 																			<!--begin::Row-->
