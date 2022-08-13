@@ -57,7 +57,7 @@ def dashboard(request):
     new = Travelinfo.objects.filter(offid=msid,status="New").count()
     pending = Travelinfo.objects.filter(offid=msid,status="Pending").count()
     decline = Travelinfo.objects.filter(offid=msid,status="Decline").count()
-    subo = Travelinfo.objects.filter(hodemail=email, status="New").filter(dremail=email).count()
+    subo = Travelinfo.objects.filter(Q(hodemail=email) | Q(dremail=email)).count()
 
     print(travelsub.query)
 
