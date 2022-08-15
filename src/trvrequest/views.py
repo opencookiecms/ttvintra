@@ -59,8 +59,12 @@ def dashboard(request):
     decline = Travelinfo.objects.filter(offid=msid,status="Decline").count()
     subo = Travelinfo.objects.filter(Q(hodemail=email) | Q(dremail=email)).count()
 
+<<<<<<< HEAD
     print(travelsub.query)
 
+=======
+    print(subo)
+>>>>>>> f26cfbc369d49abd8faf92afff2c87a9601f2003
     context = {
     
         'obj':travelobj,
