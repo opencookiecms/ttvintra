@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'homebase',
     'trvrequest',
+    'itasset',
 ]
 
 MIDDLEWARE = [
