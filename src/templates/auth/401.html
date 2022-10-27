@@ -6,7 +6,7 @@
 <html lang="en">
 	<!--begin::Head-->
 	<head><base href="../../../">
-		<title>Metronic - the world's #1 selling Bootstrap Admin Theme Ecosystem for HTML, Vue, React, Angular &amp; Laravel by Keenthemes</title>
+		<title>TT Vision Hub</title>
 		<meta charset="utf-8" />
 		<meta name="description" content="The most advanced Bootstrap Admin Theme on Themeforest trusted by 94,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue &amp; Laravel versions. Grab your copy now and get life-time updates for free." />
 		<meta name="keywords" content="Metronic, bootstrap, bootstrap 5, Angular, VueJs, React, Laravel, admin themes, web design, figma, web development, free templates, free admin themes, bootstrap theme, bootstrap template, bootstrap dashboard, bootstrap dak mode, bootstrap button, bootstrap datepicker, bootstrap timepicker, fullcalendar, datatables, flaticon" />
@@ -35,18 +35,18 @@
 			<!--begin::Authentication - Sign-in -->
 			<div class="d-flex flex-column flex-lg-row flex-column-fluid">
 				<!--begin::Aside-->
-				<div class="d-flex flex-column flex-lg-row-auto w-xl-600px positon-xl-relative" style="background-color: #F2C98A">
+				<div class="d-flex flex-column flex-lg-row-auto w-xl-600px positon-xl-relative bg-dark">
 					<!--begin::Wrapper-->
 					<div class="d-flex flex-column position-xl-fixed top-0 bottom-0 w-xl-600px scroll-y">
 						<!--begin::Content-->
-						<div class="d-flex flex-row-fluid flex-column text-center p-10 pt-lg-20">
+						<div class="d-flex flex-row-fluid flex-column text-center" style="margin-top:120px;">
 							<!--begin::Logo-->
 							<a href="../../demo8/dist/index.html" class="py-9 mb-5">
 								<img alt="Logo" src="{% static 'assets/media/logos/logo.png'%}" class="h-60px" />
 							</a>
 							<!--end::Logo-->
 							<!--begin::Title-->
-							<h1 class="fw-bolder fs-2qx pb-5 pb-md-10" style="color: #986923;">Welcome to TT Vision Hub</h1>
+							<h1 class="fw-bolder fs-2qx pb-5 pb-md-10" style="color: #dcdde1;">Welcome to TT Vision Hub</h1>
 							<!--end::Title-->
 							
 							<!--end::Description-->
@@ -60,7 +60,8 @@
 				</div>
 				<!--end::Aside-->
 				<!--begin::Body-->
-				<div class="d-flex flex-column flex-lg-row-fluid py-10">
+				<div class="d-flex flex-column flex-lg-row-fluid py-10" style="background-image: url('{% static 'assets/media/images/redpanda.jpg' %}'); background-repeat: no-repeat; background-size:cover;">
+																												
 					<!--begin::Content-->
 					<div class="d-flex flex-center flex-column flex-column-fluid">
 						<!--begin::Wrapper-->
@@ -89,13 +90,13 @@
         <li>
            
             <a href="{% url 'sign_out' %}" class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
-                <img  src="assets/media/svg/brand-logos/microsoft-icon.svg" class="h-20px me-3" />Sign Out</a>
+                <img  src="{% static 'assets/media/svg/brand-logos/microsoft-5.svg'}" class="h-20px me-3" />Sign Out</a>
         </li>
     {% else %}
         <li>
            
-            <a href="{% url 'sign_in' %}" class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
-                <img  src="assets/media/svg/brand-logos/microsoft-icon.svg" class="h-20px me-3" />Continue with Mircrosoft</a>
+            <a href="{% url 'sign_in' %}" class="btn btn-flex flex-center btn-dark btn-lg w-100 mb-5">
+                <img  src="{% static 'assets/media/svg/brand-logos/microsoft-5.svg' %}" class="h-20px me-3" />Continue with Mircrosoft</a>
         </li>
     {% endif %}
 									
@@ -114,9 +115,7 @@
 					<div class="d-flex flex-center flex-wrap fs-6 p-5 pb-0">
 						<!--begin::Links-->
 						<div class="d-flex flex-center fw-bold fs-6">
-							<a href="https://keenthemes.com" class="text-muted text-hover-primary px-2" target="_blank">About</a>
-							<a href="https://devs.keenthemes.com" class="text-muted text-hover-primary px-2" target="_blank">Support</a>
-							<a href="https://1.envato.market/EA4JP" class="text-muted text-hover-primary px-2" target="_blank">Purchase</a>
+			
 						</div>
 						<!--end::Links-->
 					</div>
