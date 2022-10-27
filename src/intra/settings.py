@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-@+(msxey(!#4z&x(2lmv2&cpt$r=&1@xyt5*u6*j64j!pf74d&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost','127.0.0.1','34.124.183.52','hub.ttvision-tech.com','www.hub.ttvision-tech.com']
 
 
 # Application definition
@@ -81,10 +81,10 @@ WSGI_APPLICATION = 'intra.wsgi.application'
 DATABASES = {
    'default':{
        'ENGINE':'mssql',
-       'NAME':'ttvadm',
+       'NAME':'ttvintra',
        'USER':'root',
        'PASSWORD':'123456',
-       'HOST':'DESKTOP-MER2ENS\SQLEXPRESS',
+       'HOST':'1.9.119.137\SQLEXPRESS,2433',
        'OPTION':{
            'drive':'ODBC Driver 17 for SQL Server',
        },
