@@ -1,5 +1,3 @@
-from dis import COMPILER_FLAG_NAMES
-from sre_constants import ASSERT_NOT
 from django.db import models
 
 # Create your models here.
