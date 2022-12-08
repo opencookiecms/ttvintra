@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'homebase',
     'trvrequest',
     'itasset',
+    'labassets',
 ]
 
 MIDDLEWARE = [
