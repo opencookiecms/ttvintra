@@ -1,0 +1,42 @@
+		<!--begin::Javascript-->
+		{% load static %}
+		<!--begin::Javascript-->
+		
+		<!--begin::Global Javascript Bundle(mandatory for all pages)-->
+		<script src="{% static 'dist/assets/plugins/global/plugins.bundle.js' %}"></script>
+		<script src="{% static 'dist/assets/js/scripts.bundle.js' %}"></script>
+		<!--end::Global Javascript Bundle-->
+		<!--begin::Vendors Javascript(used for this page only)-->
+		<script src="{% static 'dist/assets/plugins/custom/datatables/datatables.bundle.js' %}"></script>
+		<!--end::Vendors Javascript-->
+		<!--begin::Custom Javascript(used for this page only)-->
+		<script src="{% static 'dist/assets/js/custom/pages/user-profile/general.js' %}"></script>
+		<script src="{% static 'dist/assets/js/widgets.bundle.js' %}"></script>
+		<script src="{% static 'dist/assets/js/custom/widgets.js' %}"></script>
+		<script src="{% static 'dist/assets/js/custom/apps/chat/chat.js' %}"></script>
+		<script src="{% static 'dist/assets/js/custom/utilities/modals/offer-a-deal/type.js' %}"></script>
+		<script src="{% static 'dist/assets/js/custom/utilities/modals/offer-a-deal/details.js' %}"></script>
+		<script src="{% static 'dist/assets/js/custom/utilities/modals/offer-a-deal/finance.js' %}"></script>
+		<script src="{% static 'dist/assets/js/custom/utilities/modals/offer-a-deal/complete.js' %}"></script>
+		<script src="{% static 'dist/assets/js/custom/utilities/modals/offer-a-deal/main.js' %}"></script>
+		<script src="{% static 'dist/assets/js/custom/utilities/modals/users-search.js' %}"></script>
+		<script src="{% static 'dist/assets/js/letteravatar.js' %}"></script>
+
+		{% if traveladd %}
+		<!--begin::Custom Javascript(used for this page only)-->
+		<script src="{% static 'dist/assets/plugins/custom/formrepeater/formrepeater.bundle.js' %}"></script>
+		<script src="{% static 'dist/assets/js/custom/utilities/modals/traveladd.js' %} "></script>
+		
+	
+		<script src="{% static 'dist/assets/js/depentmail.js' %}"></script>
+		<script src="{% static 'dist/assets/js/prejs/droptest.js' %}"></script>
+		<script src="{% static 'dist/assets/js/prejs/drophotel.js' %}"></script>
+		<script src="{% static 'dist/assets/js/prejs/date.js' %}"></script>
+		<script src="{% static 'dist/assets/js/prejs/droptrasport2.js' %}"></script>
+		<!--end::Custom Javascript-->
+
+		{% else %}
+
+		{% endif %}
+		<!--end::Custom Javascript-->
+		<!--end::Javascript-->

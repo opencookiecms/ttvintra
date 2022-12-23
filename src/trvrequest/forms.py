@@ -24,8 +24,9 @@ class TravelRequestForm(forms.ModelForm):
 
     date = forms.DateField(input_formats=DATE_INPUT_FORMAT, required=False, widget=forms.DateInput(attrs={'class':'form-control', 'placeholder':'DD/MM/YYYY'}))
     projectcode = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Project Code / Work Order'}))
+    customername = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Customer Name or Company Name'}))
     travelpurpose = forms.CharField(required=False, widget=forms.Textarea(attrs={'class':'form-control', 'type':'text', 'placeholder':'Travel Purpose', 'rows':'4'}))
-    destinations = forms.CharField(required=False, widget=forms.Textarea(attrs={'class':'form-control form-control-lg form-control-solid', 'type':'text', 'placeholder':'Destination(s)', 'rows':'4'}))
+    destinations = forms.CharField(required=False, widget=forms.Textarea(attrs={'class':'form-control form-control-lg form-control', 'type':'text', 'placeholder':'Destination(s)', 'rows':'4'}))
     datearrive = forms.DateField(input_formats=DATE_INPUT_FORMAT, required=False, widget=forms.DateInput(attrs={'class':'form-control'}))
     timearrive = forms.CharField(required=False,widget=forms.TextInput(attrs={'class':'form-control'}))
     datereturn = forms.DateField(input_formats=DATE_INPUT_FORMAT, required=False, widget=forms.DateInput(attrs={'class':'form-control'}))

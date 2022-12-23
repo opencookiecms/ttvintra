@@ -4,6 +4,7 @@ from django.urls import path, include, re_path
 
 from homebase import views
 from trvrequest import views as trviews
+from labassets import views as labviews
 from django.conf import settings
 from django.conf.urls.static import static
 from ms_identity_web.django.msal_views_and_urls import MsalViews
@@ -22,9 +23,12 @@ urlpatterns = [
 
     path('travelrequest/add', trviews.traveladd, name='traveladd'),
     path('travelrequest/dashboard', trviews.dashboard, name='tvrdashboard'),
+    path('travelrequest/list',trviews.travelist, name="travellist"),
     path('travelrequest/overview/<int:id>',trviews.traveloverview, name='overview'),
     path('travelrequest/approval/<int:id>', trviews.approval, name="approval"),
     path('travelrequest/edit/<int:id>', trviews.travelmodified, name="traveledit"),
+
+    path('labsystem/dashboard', labviews.labdash, name="labindex"),
     path('admin/', admin.site.urls),
     path(f'{settings.AAD_CONFIG.django.auth_endpoints.prefix}/', include(msal_urls)),   # our pre-configured msal URLs
 ]

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/ im pull this on main
 
 from pathlib import Path
 import os
+from storages.backends.sftpstorage import SFTPStorage
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,6 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost','127.0.0.1','34.124.183.52','hub.ttvision-tech.com','www.hub.ttvision-tech.com']
 
+#DEFAULT_FILE_STORAGE = 'storages.backends.sftpstorage.SFTPStorage'
 
 # Application definition
 
@@ -85,7 +87,7 @@ DATABASES = {
        'NAME':'ttvintra',
        'USER':'root',
        'PASSWORD':'123456',
-       'HOST':'1.9.119.137\SQLEXPRESS,2433',
+       'HOST':'ttvisionnet.ddns.net\SQLEXPRESS,2433',
        'OPTION':{
            'drive':'ODBC Driver 17 for SQL Server',
        },
@@ -136,6 +138,15 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
+
+SFTP_STORAGE_HOST = 'ttvisionnet.ddns.net'
+SFTP_STORAGE_ROOT = '/SFTP_Root'
+SFTP_STORAGE_PARAMS = {
+    'username': 'ttvhub',
+    'password': '123456',
+    'port':'9221',
+}
+
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'

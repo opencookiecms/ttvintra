@@ -1,6 +1,5 @@
 from django.conf import settings
 from django.shortcuts import render, redirect
-from django.conf import settings
 from homebase.models import ApplicationPerm
 from trvrequest.forms import TicketForm, TravelRequestForm, TraveleditForm
 from django.core import serializers
@@ -33,11 +32,13 @@ def traveladd(request):
             print('fail to save the data')
     context = {
         'profile':dict(results),
-        'titlehead':'Travel Request - Add New',
+        'titlehead':'Travel Request - New Request',
         'traveladd':True,
+        'tradd':True,
+        'show':True,
         'form':form
     }
-    return render(request, 'pages/travelrequest/traveladd.html',context)
+    return render(request, 'pages/travelrequest/form/traveladd.html',context)
 
 @ms_identity_web.login_required
 def dashboard(request):
@@ -72,6 +73,8 @@ def dashboard(request):
         'total':total,
         'subo':subo,
         'new':new,
+        'show':True,
+        'mytr':True,
         'pending':pending,
         'decline':decline,
         'appperm':admintravel,
@@ -185,6 +188,29 @@ def approval(request, id):
         'ticked':ticked
     }
     return render(request, 'pages/travelrequest/overviewapproval.html',context)
+
+
+
+
+@ms_identity_web.login_required
+def travelist(request):
+
+    ms_identity_web.acquire_token_silently()
+    graphz = 'https://graph.microsoft.com/beta/me'
+    authz = f'Bearer {ms_identity_web.id_data._access_token}'
+    results = requests.get(graphz, headers={'Authorization':authz}).json()
+
+    msid = results['id']
+
+    context = {
+        'travelobj':Travelinfo.objects.filter(offid=msid),
+        'trreview':True,
+        'show':True,
+        'profile':dict(results),
+    }
+    return render(request, 'pages/travelrequest/list.html',context)
+
+
 
 
 

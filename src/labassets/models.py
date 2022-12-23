@@ -1,4 +1,8 @@
 from django.db import models
+from django.conf import settings
+from storages.backends.sftpstorage import SFTPStorage
+
+fs = SFTPStorage()
 
 # Create your models here.
 
@@ -12,9 +16,8 @@ class Camera(models.Model):
     isomark = models.CharField(max_length=50, null=True, blank=True) 
     mountingtype = models.CharField(max_length=50, null=True, blank=True) 
     interfacetype = models.CharField(max_length=50, null=True, blank=True) 
-    
-    itempic = models.ImageField(null=True, blank=True) 
-    attachment = models.FileField(null=True, blank=True) 
+    itempic = models.ImageField(upload_to='photos', storage=fs, null=True, blank=True) 
+    attachment = models.FileField(upload_to='attachment', storage=fs, null=True, blank=True) 
     status  = models.CharField(max_length=50, null=True, blank=True)
     createby = models.CharField(max_length=150, null=True, blank=True)
     createdat = models.DateTimeField(auto_now_add=True, editable=False)
@@ -25,7 +28,7 @@ class Lens(models.Model):
     assetno = models.CharField(max_length=50, null=True, blank=True) 
     location = models.CharField(max_length=50, null=True, blank=True)
     typeitem = models.CharField(max_length=50, null=True, blank=True) 
-    focallenth = models.CharField(max_length=50, null=True, blank=True) 
+    focallength = models.CharField(max_length=50, null=True, blank=True) 
     mountingtype = models.CharField(max_length=50, null=True, blank=True) 
     itemdesc = models.TextField(null=True, blank=True) 
     itempic = models.ImageField(null=True, blank=True) 

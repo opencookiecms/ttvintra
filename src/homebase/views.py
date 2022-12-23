@@ -27,7 +27,7 @@ def index(request):
         'title':'Application',
         'titlehead':'My Dashboard'
     }
-    return render(request, 'pages/hub.html',context)
+    return render(request, 'pages/dashboard/hub.html',context)
 
 
 @ms_identity_web.login_required
