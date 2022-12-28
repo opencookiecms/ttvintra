@@ -29,6 +29,12 @@ urlpatterns = [
     path('travelrequest/edit/<int:id>', trviews.travelmodified, name="traveledit"),
 
     path('labsystem/dashboard', labviews.labdash, name="labindex"),
+    path('labsystem/camera/add_camera',labviews.add_camera, name='add_camera'),
+    path('labsystem/camera/edit_camera/<int:pk>',labviews.edit_camera, name="edit_camera"),
+
+    path('labsystem/lens/add_lens',labviews.add_camera, name='add_lens'),
+    path('labsystem/lens/edit_lens/<int:pk>',labviews.edit_camera, name="edit_lens"),
+
     path('admin/', admin.site.urls),
     path(f'{settings.AAD_CONFIG.django.auth_endpoints.prefix}/', include(msal_urls)),   # our pre-configured msal URLs
 ]

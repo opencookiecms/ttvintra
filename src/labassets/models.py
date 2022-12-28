@@ -4,6 +4,7 @@ from storages.backends.sftpstorage import SFTPStorage
 
 fs = SFTPStorage()
 
+
 # Create your models here.
 
 class Camera(models.Model):
@@ -20,8 +21,8 @@ class Camera(models.Model):
     attachment = models.FileField(upload_to='attachment', storage=fs, null=True, blank=True) 
     status  = models.CharField(max_length=50, null=True, blank=True)
     createby = models.CharField(max_length=150, null=True, blank=True)
-    createdat = models.DateTimeField(auto_now_add=True, editable=False)
-    updatedat = models.DateTimeField(auto_now=True, editable=False)
+    createdate = models.DateTimeField(auto_now_add=True, editable=False)
+    updatedate = models.DateTimeField(auto_now=True, editable=False)
 
 class Lens(models.Model):
     lensemodule  = models.CharField(max_length=100, null=True, blank=True) 
@@ -35,8 +36,8 @@ class Lens(models.Model):
     attachment = models.FileField(null=True, blank=True) 
     status  = models.CharField(max_length=50, null=True, blank=True)
     createby = models.CharField(max_length=150, null=True, blank=True)
-    createdat = models.DateTimeField(auto_now_add=True, editable=False)
-    updatedat = models.DateTimeField(auto_now=True, editable=False)
+    createdate = models.DateTimeField(auto_now_add=True, editable=False)
+    updatedate = models.DateTimeField(auto_now=True, editable=False)
 
 class LightingCon(models.Model):
 
@@ -48,8 +49,8 @@ class LightingCon(models.Model):
     attachment = models.FileField(null=True, blank=True) 
     status  = models.CharField(max_length=50, null=True, blank=True)
     createby = models.CharField(max_length=150, null=True, blank=True)
-    createdat = models.DateTimeField(auto_now_add=True, editable=False)
-    updatedat = models.DateTimeField(auto_now=True, editable=False)
+    createdate = models.DateTimeField(auto_now_add=True, editable=False)
+    updatedate = models.DateTimeField(auto_now=True, editable=False)
 
 class Lighting(models.Model):
 
@@ -68,8 +69,8 @@ class Lighting(models.Model):
     status = models.CharField(max_length=50, null=True, blank=True) 
     itemdesc = models.TextField(null=True, blank=True) 
     createby = models.CharField(max_length=150, null=True, blank=True)
-    createdat = models.DateTimeField(auto_now_add=True, editable=False)
-    updatedat = models.DateTimeField(auto_now=True, editable=False)
+    createdate = models.DateTimeField(auto_now_add=True, editable=False)
+    updatedate = models.DateTimeField(auto_now=True, editable=False)
 
 class Laser(models.Model):
     lasermodule  = models.CharField(max_length=100, null=True, blank=True) 
@@ -80,8 +81,8 @@ class Laser(models.Model):
     attachment = models.FileField(null=True, blank=True) 
     status = models.CharField(max_length=50, null=True, blank=True) 
     createby = models.CharField(max_length=150, null=True, blank=True)
-    createdat = models.DateTimeField(auto_now_add=True, editable=False)
-    updatedat = models.DateTimeField(auto_now=True, editable=False)
+    createdate = models.DateTimeField(auto_now_add=True, editable=False)
+    updatedate = models.DateTimeField(auto_now=True, editable=False)
 
 class Powersupply(models.Model):
     powermodule  = models.CharField(max_length=100, null=True, blank=True) 
@@ -93,8 +94,8 @@ class Powersupply(models.Model):
     attachment = models.FileField(null=True, blank=True) 
     status = models.CharField(max_length=50, null=True, blank=True) 
     createby = models.CharField(max_length=150, null=True, blank=True)
-    createdat = models.DateTimeField(auto_now_add=True, editable=False)
-    updatedat = models.DateTimeField(auto_now=True, editable=False)
+    createdate = models.DateTimeField(auto_now_add=True, editable=False)
+    updatedate = models.DateTimeField(auto_now=True, editable=False)
     quantity  = models.IntegerField(null=True, blank=True) 
 
 class Cable(models.Model):
@@ -107,8 +108,8 @@ class Cable(models.Model):
     attachment = models.FileField(null=True, blank=True)  
     status = models.CharField(max_length=50, null=True, blank=True) 
     createby = models.CharField(max_length=150, null=True, blank=True)
-    createdat = models.DateTimeField(auto_now_add=True, editable=False)
-    updatedat = models.DateTimeField(auto_now=True, editable=False)
+    createdate = models.DateTimeField(auto_now_add=True, editable=False)
+    updatedate = models.DateTimeField(auto_now=True, editable=False)
     quantity  = models.IntegerField(null=True, blank=True) 
 
 class Card(models.Model):
@@ -121,8 +122,8 @@ class Card(models.Model):
     status = models.CharField(max_length=50, null=True, blank=True) 
     itemdesc = models.TextField(null=True, blank=True) 
     createby = models.CharField(max_length=150, null=True, blank=True)
-    createdat = models.DateTimeField(auto_now_add=True, editable=False)
-    updatedat = models.DateTimeField(auto_now=True, editable=False)
+    createdate = models.DateTimeField(auto_now_add=True, editable=False)
+    updatedate = models.DateTimeField(auto_now=True, editable=False)
     quantity  = models.IntegerField(null=True, blank=True) 
 
 class Caltarget(models.Model):
@@ -134,8 +135,8 @@ class Caltarget(models.Model):
     status = models.CharField(max_length=50, null=True, blank=True) 
     itemdesc = models.TextField(null=True, blank=True) 
     createby = models.CharField(max_length=150, null=True, blank=True)
-    createdat = models.DateTimeField(auto_now_add=True, editable=False)
-    updatedat = models.DateTimeField(auto_now=True, editable=False)
+    createdate = models.DateTimeField(auto_now_add=True, editable=False)
+    updatedate = models.DateTimeField(auto_now=True, editable=False)
     quantity  = models.IntegerField(null=True, blank=True) 
 
 class Optic(models.Model):
@@ -148,8 +149,8 @@ class Optic(models.Model):
     attachment = models.FileField(null=True, blank=True) 
     status = models.CharField(max_length=50, null=True, blank=True) 
     createby = models.CharField(max_length=150, null=True, blank=True)
-    createdat = models.DateTimeField(auto_now_add=True, editable=False)
-    updatedat = models.DateTimeField(auto_now=True, editable=False)
+    createdate = models.DateTimeField(auto_now_add=True, editable=False)
+    updatedate = models.DateTimeField(auto_now=True, editable=False)
     quantity  = models.IntegerField(null=True, blank=True) 
 
 class Misc(models.Model):
@@ -161,8 +162,8 @@ class Misc(models.Model):
     attachment = models.FileField(null=True, blank=True) 
     status = models.CharField(max_length=50, null=True, blank=True) 
     createby = models.CharField(max_length=150, null=True, blank=True)
-    createdat = models.DateTimeField(auto_now_add=True, editable=False)
-    updatedat = models.DateTimeField(auto_now=True, editable=False)
+    createdate = models.DateTimeField(auto_now_add=True, editable=False)
+    updatedate = models.DateTimeField(auto_now=True, editable=False)
     quantity  = models.IntegerField(null=True, blank=True) 
 
     

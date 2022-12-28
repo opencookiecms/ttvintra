@@ -16,11 +16,6 @@ ms_identity_web = settings.MS_IDENTITY_WEB
 @ms_identity_web.login_required
 def traveladd(request):
 
-    ms_identity_web.acquire_token_silently()
-    graphz = 'https://graph.microsoft.com/beta/me'
-    authz = f'Bearer {ms_identity_web.id_data._access_token}'
-    results = requests.get(graphz, headers={'Authorization': authz}).json()
-
     form = TravelRequestForm(request.POST or None)
     if request.method == 'POST':
         if form.is_valid():
@@ -31,7 +26,7 @@ def traveladd(request):
             print(form.errors)
             print('fail to save the data')
     context = {
-        'profile':dict(results),
+      
         'titlehead':'Travel Request - New Request',
         'traveladd':True,
         'tradd':True,
@@ -51,6 +46,7 @@ def dashboard(request):
 
     msid = results['id']
     email = results['mail']
+    
     admintravel = ApplicationPerm.objects.filter(userlink__mailaddress=email).first()
     traveall = Travelinfo.objects.all().count()
     travelobj = Travelinfo.objects.filter(offid=msid)
@@ -67,7 +63,6 @@ def dashboard(request):
     
         'obj':travelobj,
         'obj2':travelsub,
-        'profile':dict(results),
         'traveldashboard':True,
         'titlehead':'TT Vision - My Travel Request',
         'total':total,
@@ -86,17 +81,11 @@ def dashboard(request):
 @ms_identity_web.login_required
 def traveloverview(request, id):
 
-    ms_identity_web.acquire_token_silently()
-    graphz = 'https://graph.microsoft.com/beta/me'
-    authz = f'Bearer {ms_identity_web.id_data._access_token}'
-    results = requests.get(graphz, headers={'Authorization':authz}).json()
-
     travel = Travelinfo.objects.get(id=id)
     ticked = AknowlegdeTicket.objects.filter(id=id).first()
 
 
     context = {
-        'profile':dict(results),
         'overview':True,
         'titlehead':'Travel Request Details',
         'travel':travel,
@@ -107,10 +96,6 @@ def traveloverview(request, id):
 @ms_identity_web.login_required
 def ticketissue(request, id):
 
-    ms_identity_web.acquire_token_silently()
-    graphz = 'https://graph.microsoft.com/beta/me'
-    authz = f'Bearer {ms_identity_web.id_data._access_token}'
-    results = requests.get(graphz, headers={'Authorization':authz}).json()
 
     travel = Travelinfo.objects.get(id=id)
     ticket = AknowlegdeTicket.objects.filter(id=id).first()
@@ -126,7 +111,6 @@ def ticketissue(request, id):
 
     context = {
         'akticket':True,
-        'profile':dict(results),
         'overview':True,
         'titlehead':'Travel Request Details',
         'travel':travel,
@@ -139,11 +123,7 @@ def ticketissue(request, id):
 @ms_identity_web.login_required
 def travelmodified(request, id):
 
-    
-    ms_identity_web.acquire_token_silently()
-    graphz = 'https://graph.microsoft.com/beta/me'
-    authz = f'Bearer {ms_identity_web.id_data._access_token}'
-    results = requests.get(graphz, headers={'Authorization':authz}).json()
+
 
     travel = Travelinfo.objects.get(id=id)
 
@@ -160,7 +140,6 @@ def travelmodified(request, id):
     context = {
         'editravel':True,
         'travel':travel,
-        'profile':dict(results),
         'titlehead':'Travel Request Edit',
         'form':form
     }
@@ -171,17 +150,9 @@ def travelmodified(request, id):
 @ms_identity_web.login_required
 def approval(request, id):
 
-    ms_identity_web.acquire_token_silently()
-    graphz = 'https://graph.microsoft.com/beta/me'
-    authz = f'Bearer {ms_identity_web.id_data._access_token}'
-    results = requests.get(graphz, headers={'Authorization':authz}).json()
-
     travel = Travelinfo.objects.get(id=id)
     ticked = AknowlegdeTicket.objects.filter(id=id).first()
-
-
     context = {
-        'profile':dict(results),
         'overview':True,
         'titlehead':'Travel Request Details',
         'travel':travel,
@@ -206,7 +177,6 @@ def travelist(request):
         'travelobj':Travelinfo.objects.filter(offid=msid),
         'trreview':True,
         'show':True,
-        'profile':dict(results),
     }
     return render(request, 'pages/travelrequest/list.html',context)
 

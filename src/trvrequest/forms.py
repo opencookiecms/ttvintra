@@ -1,7 +1,4 @@
-import imp
 from django import forms
-from django.db import models
-from django.conf import settings
 from django.db.models import Q
 from trvrequest.models import Travelinfo, AknowlegdeTicket
 from homebase.models import Specialuser
