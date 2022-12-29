@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from labassets.models import Camera, Lens
+
+admin.site.register(Camera)
+admin.site.register(Lens)

@@ -7,9 +7,9 @@
     <!--begin::Container-->
     <div id="kt_content_container" class="container-xxl">
         {% if create %}
-        <form id=""action="{% url 'add_lens' %}" method="POST" class="form d-flex flex-column flex-lg-row" enctype='multipart/form-data'>
+        <form id=""action="{% url 'add_lightcon' %}" method="POST" class="form d-flex flex-column flex-lg-row" enctype='multipart/form-data'>
         {% elif update %}
-        <form id=""action="{% url 'edit_lens' pk=data.pk  %}" method="POST" class="form d-flex flex-column flex-lg-row" enctype='multipart/form-data'>
+        <form id=""action="{% url 'edit_lightcon' pk=data.pk  %}" method="POST" class="form d-flex flex-column flex-lg-row" enctype='multipart/form-data'>
         {% endif %}
          
         
@@ -29,7 +29,7 @@
                         <!--begin::Input group-->
                         <div class="mb-5 fv-row">
                             <!--begin::Label-->
-                            <label class="required form-label">Lens Modules</label>
+                            <label class="required form-label">Lighting Controller Modules</label>
                             <!--end::Label-->
                             <!--begin::Input-->
                             {{form.lensemodule}}

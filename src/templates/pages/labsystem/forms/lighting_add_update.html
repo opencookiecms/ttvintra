@@ -7,9 +7,9 @@
     <!--begin::Container-->
     <div id="kt_content_container" class="container-xxl">
         {% if create %}
-        <form id=""action="{% url 'add_lens' %}" method="POST" class="form d-flex flex-column flex-lg-row" enctype='multipart/form-data'>
+        <form id=""action="{% url 'add_camera' %}" method="POST" class="form d-flex flex-column flex-lg-row" enctype='multipart/form-data'>
         {% elif update %}
-        <form id=""action="{% url 'edit_lens' pk=data.pk  %}" method="POST" class="form d-flex flex-column flex-lg-row" enctype='multipart/form-data'>
+        <form id=""action="{% url 'edit_camera' pk=data.pk  %}" method="POST" class="form d-flex flex-column flex-lg-row" enctype='multipart/form-data'>
         {% endif %}
          
         
@@ -29,13 +29,13 @@
                         <!--begin::Input group-->
                         <div class="mb-5 fv-row">
                             <!--begin::Label-->
-                            <label class="required form-label">Lens Modules</label>
+                            <label class="required form-label">Camera Module</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            {{form.lensemodule}}
+                            {{form.cameramodule}}
                             <!--end::Input-->
                             <!--begin::Description-->
-                            <div class="text-muted fs-7">A lens module.</div>
+                            <div class="text-muted fs-7">Camera Module / Models.</div>
                             <!--end::Description-->
                         </div>
                         <!--end::Input group-->
@@ -50,7 +50,7 @@
                            {{form.assetno}}
                             <!--end::Editor-->
                             <!--begin::Description-->
-                            <div class="text-muted fs-7">Asset no must be unique.</div>
+                            <div class="text-muted fs-7">Assets No for this camera.</div>
                             <!--end::Description-->
                             </div>
                             <div class="col-6">
@@ -61,7 +61,7 @@
                                {{form.location}}
                                 <!--end::Editor-->
                                 <!--begin::Description-->
-                                <div class="text-muted fs-7">Set a description to the category for better visibility.</div>
+                                <div class="text-muted fs-7">Where this camera was store.</div>
                                 <!--end::Description-->
                                 </div>
                             </div>
@@ -96,11 +96,23 @@
                     <!--end::Card header-->
                     <!--begin::Card body-->
                     <div class="card-body pt-0">
-                      
+                        <!--begin::Input group-->
+                        <div class="mb-5">
+                            <!--begin::Label-->
+                            <label class="form-label">Location</label>
+                            <!--end::Label-->
+                            <!--begin::Input-->
+                            {{form.location}}
+                            <!--end::Input-->
+                            <!--begin::Description-->
+                            <div class="text-muted fs-7">Location the item was store.</div>
+                            <!--end::Description-->
+                        </div>
+                        <!--end::Input group-->
                         <!--begin::Input group-->
                         <div class="mb-5 fv-row">
                             <div class="row">
-                                <div class=col-md-12>
+                                <div class=col-md-6>
                             <!--begin::Label-->
                             <label class="form-label">Item Type</label>
                             <!--end::Label-->
@@ -111,7 +123,17 @@
                             <div class="text-muted fs-7">Item type of the product.</div>
                             <!--end::Description-->
                                 </div>
-                           
+                                <div class=col-md-6>
+                                    <!--begin::Label-->
+                                    <label class="form-label">Resolution</label>
+                                    <!--end::Label-->
+                                    <!--begin::Editor-->
+                                    {{form.resolution}}
+                                    <!--end::Editor-->
+                                    <!--begin::Description-->
+                                    <div class="text-muted fs-7">Resolution pixel of the camera.</div>
+                                    <!--end::Description-->
+                                        </div>
                             </div>
                         </div>
                         <!--end::Input group-->
@@ -121,16 +143,16 @@
                             <div class="row">
                                 <div class=col-md-6>
                             <!--begin::Label-->
-                            <label class="form-label">Focal Length</label>
+                            <label class="form-label">ISO Mark</label>
                             <!--end::Label-->
                             <!--begin::Editor-->
-                            {{form.focallength}}
+                            {{form.isomark}}
                             <!--end::Editor-->
                             <!--begin::Description-->
-                            <div class="text-muted fs-7">Item type of the product.</div>
+                            <div class="text-muted fs-7">ISO mark for this camera either Color or Mono.</div>
                             <!--end::Description-->
                                 </div>
-                                <div class=col-md-6>
+                                <div class=col-md-12>
                                     <!--begin::Label-->
                                     <label class="form-label">Mounting Type</label>
                                     <!--end::Label-->
@@ -138,13 +160,23 @@
                                     {{form.mountingtype}}
                                     <!--end::Editor-->
                                     <!--begin::Description-->
-                                    <div class="text-muted fs-7">Type of mounting.</div>
+                                    <div class="text-muted fs-7">Camera mounting type.</div>
                                     <!--end::Description-->
                                         </div>
                             </div>
                         </div>
                         <!--end::Input group-->
-                    
+                        <!--begin::Input group-->
+                        <div class="mb-5">
+                            <!--begin::Label-->
+                            <label class="form-label">Interface Type</label>
+                            <!--end::Label-->
+                        
+                            <!--begin::Description-->
+                           {{form.interfacetype}}
+                            <!--end::Description-->
+                        </div>
+                        <!--end::Input group-->
                            <!--begin::Input group-->
                            <div>
                             <!--begin::Label-->
