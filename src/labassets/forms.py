@@ -1,5 +1,6 @@
 from django import forms
-from labassets.models import Camera,Lens, LightingCon, Lighting
+from labassets.models import Camera,Lens, LightingCon, Lighting,Laser,Powersupply,Cable,Card,Caltarget, Optic, Misc
+from intra.settings import DATE_INPUT_FORMAT
 
 
 
@@ -139,7 +140,7 @@ class LightconForm(forms.ModelForm):
         ('Not-Available', 'Not-Available')
     )
 
-    lightconmodule = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Lens Name / Module'}))
+    lightconmodule = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Lightcontroller Module Name'}))
     assetno  = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Light Controller Asset No'}))
     location = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Location'}))
     itemdesc =  forms.CharField(required=False, widget=forms.Textarea(attrs={'class':'form-control', 'type':'text', 'placeholder':'Please state the item of description', 'rows':'4'}))
@@ -203,7 +204,7 @@ class LightingForm(forms.ModelForm):
     wattage = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Light Controller Asset No'}))
     voltage = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Light Controller Asset No'}))
     currentamp = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Light Controller Asset No'}))
-    manufacturing = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Light Controller Asset No'}))
+    manufacturing = forms.DateField(input_formats=DATE_INPUT_FORMAT, required=False, widget=forms.DateInput(attrs={'class':'form-control'}))
     itempic = forms.FileField(required=False) 
     attachment = forms.FileField(required=False) 
     quantity = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Light Controller Asset No'}))
@@ -230,4 +231,202 @@ class LightingForm(forms.ModelForm):
             'itemdesc', 
             'createby',
         ]
-   
+
+
+class LaserForm(forms.ModelForm):
+
+    lasermodule  = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Laser module name'}))
+    assetno  = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Laser Asset No'}))
+    location = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Location'}))
+    itemdesc 
+    itempic  
+    attachment 
+    status 
+    createby = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'create by'}))
+
+
+    class Meta:
+        model = Laser
+        fields = [
+            'lasermodule', 
+            'assetno',   
+            'location', 
+            'itemdesc',   
+            'itempic', 
+            'attachment',  
+            'status', 
+            'createby', 
+      
+        ]
+
+class PowersupplyForm(forms.ModelForm):
+
+    powermodule = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Power Supply Module name'}))  
+    assetno  = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Asset No'}))
+    location = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Location'})) 
+    voltage  = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Voltage'})) 
+    itemdesc 
+    itempic 
+    attachment 
+    status 
+    createby = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Laser module name'}))
+    quantity = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Please state the quantity'}))
+
+    class Meta:
+        model = Powersupply
+        fields = [
+            'powermodule',   
+            'assetno',  
+            'location',  
+            'voltage',   
+            'itemdesc', 
+            'itempic', 
+            'attachment', 
+            'status', 
+            'createby', 
+            'quantity',
+        ]
+
+class CableForm(forms.ModelForm):
+
+    cablemodule  = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Cable Module Name'}))
+    assetsno   = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Asset No'}))
+    location = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'location'}))
+    itemdesc  
+    quantity  = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'The Quantity'}))
+    itempic 
+    attachment   
+    status
+    createby = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Create by'}))
+
+
+    class Meta:
+        model = Cable
+        fields = [
+            'cablemodule',  
+            'assetsno',   
+            'location', 
+            'itemdesc',  
+            'quantity',  
+            'itempic', 
+            'attachment',   
+            'status',
+            'createby', 
+            'quantity', 
+        ]
+
+class CardForm(forms.ModelForm):
+    cardmodule 
+    assetno 
+    location 
+    itemtype  
+    itempic 
+    attachment
+    status 
+    itemdesc 
+    createby 
+    createdate 
+    updatedate 
+    quantity
+
+    class Meta:
+        model = Card
+        fields = [
+            'cardmodule', 
+            'assetno', 
+            'location', 
+            'itemtype',  
+            'itempic', 
+            'attachment',
+            'status', 
+            'itemdesc', 
+            'createby', 
+            'quantity', 
+        ]
+
+class CaltargetForm(forms.ModelForm):
+
+    calmodule  
+    assetno 
+    location 
+    itempic 
+    attachment 
+    status 
+    itemdesc 
+    createby 
+    createdate 
+    updatedate 
+    quantity  
+
+    class Meta:
+        model = Caltarget
+        fields = [
+            'calmodule',  
+            'assetno', 
+            'location', 
+            'itempic', 
+            'attachment', 
+            'status', 
+            'itemdesc', 
+            'createby', 
+            'quantity',
+        ]
+
+class OpticForm(forms.ModelForm):
+
+    opticmodule  
+    assetno 
+    location 
+    itemtype 
+    itemdesc 
+    itempic 
+    attachment 
+    status 
+    createby 
+    createdate 
+    updatedate 
+    quantity 
+
+    class Meta:
+
+        model = Optic
+        fields = [
+            'opticmodule',  
+            'assetno', 
+            'location', 
+            'itemtype', 
+            'itemdesc', 
+            'itempic', 
+            'attachment', 
+            'status', 
+            'createby', 
+            'quantity', 
+        ]
+
+class Miscform(forms.ModelForm):
+
+    miscmodule  
+    assetno 
+    itemdesc  
+    location 
+    itempic  
+    attachment 
+    status 
+    createby 
+    createdate 
+    updatedate 
+    quantity 
+
+    class Meta:
+        model = Misc
+        fields = [
+            'miscmodule',  
+            'assetno', 
+            'itemdesc',  
+            'location', 
+            'itempic',  
+            'attachment', 
+            'status', 
+            'createby', 
+            'quantity', 
+        ]

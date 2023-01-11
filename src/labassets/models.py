@@ -62,7 +62,7 @@ class Lighting(models.Model):
     wattage = models.CharField(max_length=50, null=True, blank=True) 
     voltage = models.CharField(max_length=50, null=True, blank=True) 
     currentamp = models.CharField(max_length=50, null=True, blank=True) 
-    manufacturing = models.CharField(max_length=50, null=True, blank=True) 
+    manufacturing = models.DateField(null=True, blank=True)
     itempic = models.ImageField(upload_to='photos/lighting', storage=fs, null=True, blank=True) 
     attachment = models.FileField(upload_to='attachment/lighting', storage=fs, null=True, blank=True) 
     quantity = models.CharField(max_length=50, null=True, blank=True) 
@@ -110,7 +110,7 @@ class Cable(models.Model):
     createby = models.CharField(max_length=150, null=True, blank=True)
     createdate = models.DateTimeField(auto_now_add=True, editable=False)
     updatedate = models.DateTimeField(auto_now=True, editable=False)
-    quantity  = models.IntegerField(null=True, blank=True) 
+  
 
 class Card(models.Model):
     cardmodule  = models.CharField(max_length=100, null=True, blank=True) 

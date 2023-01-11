@@ -16,12 +16,3 @@ def context(request):
                 redirect_uri_external_link = request.build_absolute_uri(reverse(settings.AAD_CONFIG.django.auth_endpoints.redirect)),
                 aad_link=aad_link)
 
-
-def profile(request):
-    
-    ms_identity_web.acquire_token_silently()
-    graphz = 'https://graph.microsoft.com/beta/me'
-    authz = f'Bearer {ms_identity_web.id_data._access_token}'
-    results = requests.get(graphz, headers={'Authorization':authz}).json()
-
-    return {"profile":dict(results)}
