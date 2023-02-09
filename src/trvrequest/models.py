@@ -1,5 +1,7 @@
 from django.db.models.deletion import CASCADE
 from django.db import models
+from django.contrib.auth.models import User
+from django.db.models import Avg
 
 # Create your models here.
 class Travelinfo(models.Model):

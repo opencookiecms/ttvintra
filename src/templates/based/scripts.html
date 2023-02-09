@@ -35,6 +35,12 @@
 		<script src="{% static 'dist/assets/js/prejs/droptrasport2.js' %}"></script>
 		<!--end::Custom Javascript-->
 
+		{% elif cv %}
+
+		<script src="{% static 'assets/js/custom/apps/user-management/users/list/table.js' %}"></script>
+		<script src="{% static 'assets/js/custom/apps/user-management/users/list/export-users.js' %}"></script>
+
+
 		{% else %}
 
 		{% endif %}

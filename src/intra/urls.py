@@ -32,6 +32,7 @@ urlpatterns = [
 
     path('labsystem/camera/add_camera',labviews.add_camera, name='add_camera'),
     path('labsystem/camera/edit_camera/<int:pk>',labviews.edit_camera, name="edit_camera"),
+    path('labsystem/camera/all_camera',labviews.table_camera, name="table_camera"),
 
     path('labsystem/lens/add_lens',labviews.add_lens, name='add_lens'),
     path('labsystem/lens/edit_lens/<int:pk>',labviews.edit_lens, name="edit_lens"),
@@ -41,6 +42,21 @@ urlpatterns = [
 
     path('labsystem/lighting/add_lighting',labviews.add_lens, name='add_lighting'),
     path('labsystem/lighting/edit_lighting/<int:pk>',labviews.edit_lens, name="edit_lighting"),
+
+    path('labsystem/laser/add_laser',labviews.add_laser, name='add_laser'),
+    path('labsystem/laser/edit_laser/<int:pk>',labviews.edit_laser, name="edit_laser"),
+
+    path('labsystem/powersupply/add_power',labviews.add_power, name='add_power'),
+    path('labsystem/powersupply/edit_power/<int:pk>',labviews.edit_power, name="edit_power"),
+
+    path('labsystem/cable/add_power',labviews.add_cable, name='add_cable'),
+    path('labsystem/cable/edit_power/<int:pk>',labviews.edit_cable, name="edit_cable"),
+
+    path('labsystem/card/add_card',labviews.add_card, name='add_card'),
+    path('labsystem/card/edit_card/<int:pk>',labviews.edit_card, name="edit_card"),
+
+    path('labsystem/caltarget/add_cal',labviews.add_cal, name='add_cal'),
+    path('labsystem/caltarget/edit_cal/<int:pk>',labviews.edit_cal, name="edit_cal"),
 
     path('admin/', admin.site.urls),
     path(f'{settings.AAD_CONFIG.django.auth_endpoints.prefix}/', include(msal_urls)),   # our pre-configured msal URLs

@@ -1,0 +1,192 @@
+{% extends "based/based.html" %}
+{% block content %}
+    {% load static %}
+    <!--begin::Post-->
+    <div class="post d-flex flex-column-fluid" id="kt_post">
+        <!--begin::Container-->
+        <div id="kt_content_container" class="container-xxl">
+            {% if create %}
+                <form id=""action="{% url 'add_cal' %}"
+                      method="POST"
+                      class="form d-flex flex-column flex-lg-row"
+                      enctype='multipart/form-data'>
+                {% elif update %}
+                    <form id=""action="{% url 'edit_cal' pk=data.pk  %}"
+                          method="POST"
+                          class="form d-flex flex-column flex-lg-row"
+                          enctype='multipart/form-data'>
+                    {% endif %}
+                    <!--begin::Main column-->
+                    <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
+                        <!--begin::General options-->
+                        <div class="card card-flush py-4">
+                            <!--begin::Card header-->
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <h2>General Information</h2>
+                                </div>
+                            </div>
+                            <!--end::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body pt-0">
+                                <!--begin::Input group-->
+                                <div class="mb-5 fv-row">
+                                    <!--begin::Label-->
+                                    <label class="required form-label">CAl Target Module</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    {{ form.calmodule }}
+                                    <!--end::Input-->
+                                    <!--begin::Description-->
+                                    <div class="text-muted fs-7">A Cal.Target module name.</div>
+                                    <!--end::Description-->
+                                </div>
+                                <!--end::Input group-->
+                                <!--begin::Input group-->
+                                <div class="mb-5 fv-row">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <!--begin::Label-->
+                                            <label class="form-label">Asset No</label>
+                                            <!--end::Label-->
+                                            <!--begin::Editor-->
+                                            {{ form.assetno }}
+                                            <!--end::Editor-->
+                                            <!--begin::Description-->
+                                            <div class="text-muted fs-7">Asset no must be unique.</div>
+                                            <!--end::Description-->
+                                        </div>
+                                        <div class="col-6">
+                                            <!--begin::Label-->
+                                            <label class="form-label">Location</label>
+                                            <!--end::Label-->
+                                            <!--begin::Editor-->
+                                            {{ form.location }}
+                                            <!--end::Editor-->
+                                            <!--begin::Description-->
+                                            <div class="text-muted fs-7">Set a description to the category for better visibility.</div>
+                                            <!--end::Description-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end::Input group-->
+                                <!--begin::Input group-->
+                                <div>
+                                    <!--begin::Label-->
+                                    <label class="form-label">Description</label>
+                                    <!--end::Label-->
+                                    <!--begin::Editor-->
+                                    {{ form.itemdesc }}
+                                    <!--end::Editor-->
+                                    <!--begin::Description-->
+                                    <div class="text-muted fs-7">Set a description to the category for better visibility.</div>
+                                    <!--end::Description-->
+                                </div>
+                                <!--end::Input group-->
+                            </div>
+                            <!--end::Card header-->
+                        </div>
+                        <!--end::General options-->
+                        <!--begin::Meta options-->
+                        <div class="card card-flush py-4">
+                            <!--begin::Card header-->
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <h2>Item Status</h2>
+                                </div>
+                            </div>
+                            <!--end::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body pt-0">
+                       
+                            
+                               <!--begin::Input group-->
+                               <div class="mb-5 fv-row">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <!--begin::Label-->
+                                        <label class="form-label">Status</label>
+                                        <!--end::Label-->
+                                        <!--begin::Editor-->
+                                        {{ form.status }}
+                                        <!--end::Editor-->
+                                        <!--begin::Description-->
+                                        <div class="text-muted fs-7">Item status.</div>
+                                        <!--end::Description-->
+                                    </div>
+                                    <div class="col-6">
+                                        <!--begin::Label-->
+                                        <label class="form-label">Quantity</label>
+                                        <!--end::Label-->
+                                        <!--begin::Editor-->
+                                        {{ form.quantity }}
+                                        <!--end::Editor-->
+                                        <!--begin::Description-->
+                                        <div class="text-muted fs-7">Item quantity.</div>
+                                        <!--end::Description-->
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Input group-->
+                            </div>
+                            <!--end::Card header-->
+                        </div>
+                        <!--end::Meta options-->
+                        <!--begin::Automation-->
+                        <div class="card card-flush py-4">
+                            <!--begin::Card header-->
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <h2>Attachment</h2>
+                                </div>
+                            </div>
+                            <!--end::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body pt-0">
+                                <!--begin::Input group-->
+                                <div>
+                                    <!--begin::Label-->
+                                    <label class="form-label mb-5">Image</label>
+                                    <!--end::Label-->
+                                    <!--begin::Methods-->
+                                    <!--begin::Input row-->
+                                    <div class="fv-row">{{ form.itempic }}</div>
+                                    <!--end::Input row-->
+                                    <div class='separator separator-dashed my-5'></div>
+                                    <!--begin::Input row-->
+                                    <label class="form-label mb-5">Attachment</label>
+                                    <div class="fv-row">{{ form.attachment }}</div>
+                                    <!--end::Input row-->
+                                    <!--end::Methods-->
+                                </div>
+                                <!--end::Input group-->
+                            </div>
+                            <!--end::Card header-->
+                        </div>
+                        <!--end::Automation-->
+                        <div class="d-flex justify-content-end">
+                            <!--begin::Button-->
+                            <a href="../../demo8/dist/apps/ecommerce/catalog/products.html"
+                               id="kt_ecommerce_add_product_cancel"
+                               class="btn btn-light me-5">Cancel</a>
+                            <!--end::Button-->
+                            <!--begin::Button-->
+                            <button type="submit" id="" name="submit" class="btn btn-primary">
+                                <span class="indicator-label">Save Changes</span>
+                                <span class="indicator-progress">Please wait...
+                                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                </button>
+                                <!--end::Button-->
+                            </div>
+                        </div>
+                        <!--end::Main column-->
+                        <!--begin::Aside column-->
+                        <div class="d-flex flex-column gap-7 gap-lg-10 w-150 w-lg-500px mb-7 me-lg-10"></div>
+                        <!--end::Aside column-->
+                        {% csrf_token %}
+                    </form>
+                </div>
+                <!--end::Container-->
+            </div>
+            <!--end::Post-->
+        {% endblock content %}

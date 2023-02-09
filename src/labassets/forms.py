@@ -235,13 +235,19 @@ class LightingForm(forms.ModelForm):
 
 class LaserForm(forms.ModelForm):
 
+    status = (
+        ('', 'Please choose'),
+        ('Available', 'Available'),
+        ('Not-Available', 'Not-Available')
+    )
+
     lasermodule  = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Laser module name'}))
     assetno  = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Laser Asset No'}))
     location = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Location'}))
-    itemdesc 
-    itempic  
-    attachment 
-    status 
+    itemdesc =  forms.CharField(required=False, widget=forms.Textarea(attrs={'class':'form-control', 'type':'text', 'placeholder':'Please state the item of description', 'rows':'4'}))
+    itempic  = forms.FileField(required=False)
+    attachment = forms.FileField(required=False)
+    status  = forms.ChoiceField(choices=status, required=False, widget=forms.Select(attrs={'class':'form-select form-select-solid','data-control':'select2','data-hide-search':'true'}))
     createby = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'create by'}))
 
 
@@ -261,14 +267,20 @@ class LaserForm(forms.ModelForm):
 
 class PowersupplyForm(forms.ModelForm):
 
+    status = (
+        ('', 'Please choose'),
+        ('Available', 'Available'),
+        ('Not-Available', 'Not-Available')
+    )
+
     powermodule = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Power Supply Module name'}))  
     assetno  = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Asset No'}))
     location = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Location'})) 
     voltage  = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Voltage'})) 
-    itemdesc 
-    itempic 
-    attachment 
-    status 
+    itemdesc =  forms.CharField(required=False, widget=forms.Textarea(attrs={'class':'form-control', 'type':'text', 'placeholder':'Please state the item of description', 'rows':'4'}))
+    itempic = forms.FileField(required=False)
+    attachment = forms.FileField(required=False)
+    status = forms.ChoiceField(choices=status, required=False, widget=forms.Select(attrs={'class':'form-select form-select-solid','data-control':'select2','data-hide-search':'true'}))
     createby = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Laser module name'}))
     quantity = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Please state the quantity'}))
 
@@ -289,14 +301,20 @@ class PowersupplyForm(forms.ModelForm):
 
 class CableForm(forms.ModelForm):
 
+    status = (
+        ('', 'Please choose'),
+        ('Available', 'Available'),
+        ('Not-Available', 'Not-Available')
+    )
+
     cablemodule  = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Cable Module Name'}))
     assetsno   = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Asset No'}))
     location = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'location'}))
-    itemdesc  
+    itemdesc  =  forms.CharField(required=False, widget=forms.Textarea(attrs={'class':'form-control', 'type':'text', 'placeholder':'Please state the item of description', 'rows':'4'}))
     quantity  = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'The Quantity'}))
-    itempic 
-    attachment   
-    status
+    itempic = forms.FileField(required=False)
+    attachment  = forms.FileField(required=False) 
+    status = forms.ChoiceField(choices=status, required=False, widget=forms.Select(attrs={'class':'form-select form-select-solid','data-control':'select2','data-hide-search':'true'}))
     createby = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Create by'}))
 
 
@@ -316,18 +334,36 @@ class CableForm(forms.ModelForm):
         ]
 
 class CardForm(forms.ModelForm):
-    cardmodule 
-    assetno 
-    location 
-    itemtype  
-    itempic 
-    attachment
-    status 
-    itemdesc 
-    createby 
-    createdate 
-    updatedate 
-    quantity
+
+    types = (
+        ('', 'Please choose'),
+        ('Controller Card', 'Controller Card'),
+        ('Firewire Card', 'Firewire Card'),
+        ('Frame Grabber', 'Frame Grabber'),
+        ('IO Card', 'IO Card'),
+        ('Network Card', 'Network Card'),
+        ('Network Controller', 'Network Controller'),
+        ('PCI Card', 'PCI Card'),
+        ('Graphic Card', 'Graphic Card'),
+        ('N/A', 'N/A')
+    )
+
+    status = (
+        ('', 'Please choose'),
+        ('Available', 'Available'),
+        ('Not-Available', 'Not-Available')
+    )
+
+    cardmodule = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Cable Module Name'}))
+    assetno = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Cable Module Name'}))
+    location = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Cable Module Name'}))
+    itemtype  = forms.ChoiceField(choices=types, required=False, widget=forms.Select(attrs={'class':'form-select form-select-solid','data-control':'select2','data-hide-search':'true'}))
+    itempic = forms.FileField(required=False)
+    attachment = forms.FileField(required=False)
+    status  = forms.ChoiceField(choices=status, required=False, widget=forms.Select(attrs={'class':'form-select form-select-solid','data-control':'select2','data-hide-search':'true'}))
+    itemdesc =  forms.CharField(required=False, widget=forms.Textarea(attrs={'class':'form-control', 'type':'text', 'placeholder':'Please state the item of description', 'rows':'4'}))
+    createby = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Cable Module Name'}))
+    quantity = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Cable Module Name'}))
 
     class Meta:
         model = Card
@@ -346,17 +382,21 @@ class CardForm(forms.ModelForm):
 
 class CaltargetForm(forms.ModelForm):
 
-    calmodule  
-    assetno 
-    location 
-    itempic 
-    attachment 
-    status 
-    itemdesc 
-    createby 
-    createdate 
-    updatedate 
-    quantity  
+    status = (
+        ('', 'Please choose'),
+        ('Available', 'Available'),
+        ('Not-Available', 'Not-Available')
+    )
+
+    calmodule  = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Cable Module Name'}))
+    assetno = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Cable Module Name'}))
+    location = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Cable Module Name'}))
+    itempic = forms.FileField(required=False)
+    attachment = forms.FileField(required=False)
+    status = forms.ChoiceField(choices=status, required=False, widget=forms.Select(attrs={'class':'form-select form-select-solid','data-control':'select2','data-hide-search':'true'}))
+    itemdesc =  forms.CharField(required=False, widget=forms.Textarea(attrs={'class':'form-control', 'type':'text', 'placeholder':'Please state the item of description', 'rows':'4'}))
+    createby = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Cable Module Name'}))
+    quantity  = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Cable Module Name'}))
 
     class Meta:
         model = Caltarget
@@ -374,18 +414,38 @@ class CaltargetForm(forms.ModelForm):
 
 class OpticForm(forms.ModelForm):
 
-    opticmodule  
-    assetno 
-    location 
-    itemtype 
-    itemdesc 
-    itempic 
-    attachment 
-    status 
-    createby 
-    createdate 
-    updatedate 
-    quantity 
+    status = (
+        ('', 'Please choose'),
+        ('Available', 'Available'),
+        ('Not-Available', 'Not-Available')
+    )
+
+    types = (
+        ('', 'Please choose'),
+        ('AR Glass', 'AR Glass'),
+        ('Back Coat Mirror', 'Back Coat Mirror'),
+        ('Beam Splitter', 'Beam Splitter'),
+        ('Clear Window', 'Clear Window'),
+        ('Diffuser', 'Diffuser'),
+        ('Filter', 'Filter'),
+        ('Front Coat Mirror', 'Front Coat Mirror'),
+        ('Lens Filter', 'Lens Filter'),
+        ('Polarizer', 'Polarizer'),
+        ('Prism', 'Prism'),
+        ('RV Mirror', 'RV Mirror'),
+        ('N/A', 'N/A')
+    )
+
+    opticmodule = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Cable Module Name'})) 
+    assetno = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Cable Module Name'}))
+    location = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Cable Module Name'}))
+    itemtype = forms.ChoiceField(choices=types, required=False, widget=forms.Select(attrs={'class':'form-select form-select-solid','data-control':'select2','data-hide-search':'true'}))
+    itemdesc =  forms.CharField(required=False, widget=forms.Textarea(attrs={'class':'form-control', 'type':'text', 'placeholder':'Please state the item of description', 'rows':'4'}))
+    itempic = forms.FileField(required=False)
+    attachment = forms.FileField(required=False)
+    status = forms.ChoiceField(choices=status, required=False, widget=forms.Select(attrs={'class':'form-select form-select-solid','data-control':'select2','data-hide-search':'true'}))
+    createby = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Cable Module Name'}))
+    quantity = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Cable Module Name'}))
 
     class Meta:
 
@@ -405,17 +465,21 @@ class OpticForm(forms.ModelForm):
 
 class Miscform(forms.ModelForm):
 
-    miscmodule  
-    assetno 
-    itemdesc  
-    location 
-    itempic  
-    attachment 
-    status 
-    createby 
-    createdate 
-    updatedate 
-    quantity 
+    status = (
+        ('', 'Please choose'),
+        ('Available', 'Available'),
+        ('Not-Available', 'Not-Available')
+    )
+
+    miscmodule  = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Cable Module Name'}))
+    assetno = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Cable Module Name'}))
+    itemdesc  =  forms.CharField(required=False, widget=forms.Textarea(attrs={'class':'form-control', 'type':'text', 'placeholder':'Please state the item of description', 'rows':'4'}))
+    location = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Cable Module Name'}))
+    itempic  = forms.FileField(required=False)
+    attachment = forms.FileField(required=False)
+    status = forms.ChoiceField(choices=status, required=False, widget=forms.Select(attrs={'class':'form-select form-select-solid','data-control':'select2','data-hide-search':'true'}))
+    createby = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Cable Module Name'}))
+    quantity = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Cable Module Name'}))
 
     class Meta:
         model = Misc

@@ -88,7 +88,8 @@ DATABASES = {
        'NAME':'ttvintra',
        'USER':'root',
        'PASSWORD':'123456',
-       'HOST':'ttvisionnet.ddns.net\SQLEXPRESS,2433',
+       #'HOST':'1.9.119.137\SQLEXPRESS,2433',
+       'HOST':'10.10.150.250\SQLEXPRESS',
        'OPTION':{
            'drive':'ODBC Driver 17 for SQL Server',
        },
@@ -140,7 +141,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-SFTP_STORAGE_HOST = 'ttvisionnet.ddns.net'
+SFTP_STORAGE_HOST = '10.10.150.250'
 SFTP_STORAGE_ROOT = '/SFTP_Root'
 SFTP_STORAGE_PARAMS = {
     'username': 'ttvhub',
