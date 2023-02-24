@@ -89,7 +89,8 @@ DATABASES = {
        'USER':'root',
        'PASSWORD':'123456',
        #'HOST':'1.9.119.137\SQLEXPRESS,2433',
-       'HOST':'10.10.150.250\SQLEXPRESS',
+       'HOST':'DESKTOP-MER2ENS\SQLEXPRESS',
+       #'HOST':'10.10.150.250\SQLEXPRESS',
        'OPTION':{
            'drive':'ODBC Driver 17 for SQL Server',
        },
@@ -146,7 +147,7 @@ SFTP_STORAGE_ROOT = '/SFTP_Root'
 SFTP_STORAGE_PARAMS = {
     'username': 'ttvhub',
     'password': '123456',
-    'port':'9221',
+    'port':'22',
 }
 
 

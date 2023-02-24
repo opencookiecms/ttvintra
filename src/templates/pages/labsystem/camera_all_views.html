@@ -125,7 +125,7 @@
                                 <div class="px-7 py-5" data-kt-user-table-filter="form">
                                     <!--begin::Input group-->
                                     <div class="mb-10">
-                                        <label class="form-label fs-6 fw-semibold">Role:</label>
+                                        <label class="form-label fs-6 fw-semibold">Status:</label>
                                         <select class="form-select form-select-solid fw-bold"
                                                 data-kt-select2="true"
                                                 data-placeholder="Select option"
@@ -134,27 +134,19 @@
                                                 data-hide-search="true">
                                             <option>
                                             </option>
-                                            <option value="Administrator">
+                                            <option value="Available">
                                                 Available
                                             </option>
-                                            <option value="Analyst">
+                                            <option value="Not-Avaialble">
                                                 Not-Avaialble
                                             </option>
-                                            <option value="Developer">
-                                                Locations
-                                            </option>
-                                            <option value="Support">
-                                                Lens
-                                            </option>
-                                            <option value="Trial">
-                                                Type
-                                            </option>
+                                      
                                         </select>
                                     </div>
                                     <!--end::Input group-->
                                     <!--begin::Input group-->
                                     <div class="mb-10">
-                                        <label class="form-label fs-6 fw-semibold">Two Step Verification:</label>
+                                        <label class="form-label fs-6 fw-semibold">Type:</label>
                                         <select class="form-select form-select-solid fw-bold"
                                                 data-kt-select2="true"
                                                 data-placeholder="Select option"
@@ -163,9 +155,11 @@
                                                 data-hide-search="true">
                                             <option>
                                             </option>
-                                            <option value="Enabled">
-                                                Enabled
+                                            {% for f in tab %}
+                                            <option value="{{f.typeitem}}">
+                                               {{f.typeitem}}
                                             </option>
+                                            {% endfor %}
                                         </select>
                                     </div>
                                     <!--end::Input group-->
@@ -279,7 +273,7 @@
                                                 <!--begin::Input group-->
                                                 <div class="fv-row mb-10">
                                                     <!--begin::Label-->
-                                                    <label class="fs-6 fw-semibold form-label mb-2">Select Roles:</label>
+                                                    <label class="fs-6 fw-semibold form-label mb-2">Select type:</label>
                                                     <!--end::Label-->
                                                     <!--begin::Input-->
                                                     <select name="role"
@@ -289,21 +283,11 @@
                                                             class="form-select form-select-solid fw-bold">
                                                         <option>
                                                         </option>
-                                                        <option value="Administrator">
-                                                            Administrator
+                                                        {% for f in tab %}
+                                                        <option value="{{f.typeitem}}">
+                                                           {{f.typeitem}}
                                                         </option>
-                                                        <option value="Analyst">
-                                                            Analyst
-                                                        </option>
-                                                        <option value="Developer">
-                                                            Developer
-                                                        </option>
-                                                        <option value="Support">
-                                                            Support
-                                                        </option>
-                                                        <option value="Trial">
-                                                            Trial
-                                                        </option>
+                                                        {% endfor %}
                                                     </select>
                                                     <!--end::Input-->
                                                 </div>
@@ -672,14 +656,14 @@
                                     <!--begin::Table head-->
                                     <thead>
                                         <!--begin::Table row-->
-                                        <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                            <th class="w-10px pe-2">
+                                        <tr class="text-center text-muted fw-bold fs-7 text-uppercase gs-0 bg-dark">
+                                            <th class="w-30px pe-2 bg-light">
                                                No.
                                             </th>
-                                            <th class="min-w-125px">
+                                            <th class="min-w-125px bg-light">
                                                 Camera Module
                                             </th>
-                                            <th class="min-w-125px">
+                                            <th class="min-w-150px bg-light">
                                                 Asset No.
                                             </th>
                                             <th class="min-w-125px">
@@ -691,7 +675,31 @@
                                             <th class="min-w-125px">
                                                 Resolution
                                             </th>
-                                            <th class="text-end min-w-100px">
+                                            <th class="min-w-125px">
+                                                ISO
+                                            </th>
+                                            <th class="min-w-300px">
+                                                Type of Mounting
+                                            </th>
+                                            <th class="min-w-125px">
+                                                Interface
+                                            </th>
+                                            <th class="min-w-400px">
+                                                Notes
+                                            </th>
+                                            <th class="min-w-125px">
+                                                Attachment
+                                            </th>
+                                            <th class="min-w-125px">
+                                                Picture
+                                            </th>
+                                            <th class="min-w-125px">
+                                                Status
+                                            </th>
+                                            <th class="min-w-125px">
+                                                LOAN/Return Item
+                                            </th>
+                                            <th class="text-center min-w-150px">
                                                 Actions
                                             </th>
                                         </tr>
@@ -709,24 +717,11 @@
                                             </td>
                                             <!--end::Checkbox-->
                                             <!--begin::User=-->
-                                            <td class="d-flex align-items-center">
-                                                <!--begin:: Avatar -->
-                                                <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-                                                    <a href="../../demo8/dist/apps/user-management/users/view.html">
-                                                        <div class="symbol-label">
-                                                            <img src="assets/media/avatars/300-6.jpg" alt="Nix" class="w-100" />
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <!--end::Avatar-->
-                                                <!--begin::User details-->
-                                                <div class="d-flex flex-column">
-                                                    <a href="#"
-                                                       class="text-gray-800 text-hover-primary mb-1">{{d.cameramodule}}</a>
-                                                       <div class="badge badge-success fw-bold">
-                                                        {{d.status}}
-                                                    </div>
-                                                </div>
+                                            <td>
+                                             
+                                            
+                                                   {{d.cameramodule}}
+                                        
                                                 <!--begin::User details-->
                                             </td>
                                             <!--end::User=-->
@@ -748,6 +743,47 @@
                                             <!--begin::Joined-->
                                             <td>
                                                 {{d.resolution}}
+                                            </td>
+                                            <!--begin::Joined-->
+                                            <!--begin::Joined-->
+                                            <td>
+                                                {{d.isomark}}
+                                            </td>
+                                            <!--begin::Joined-->
+                                            <!--begin::Joined-->
+                                            <td>
+                                                {{d.mountingtype}}
+                                            </td>
+                                            <!--begin::Joined-->
+                                            <!--begin::Joined-->
+                                            <td>
+                                                {{d.interfacetype}}
+                                            </td>
+                                            <!--begin::Joined-->
+                                            <!--begin::Joined-->
+                                            <td>
+                                                {{d.itemdesc}}
+                                            </td>
+                                            <!--begin::Joined-->
+                                            <!--begin::Joined-->
+                                            <td>
+                                                <a href="http://10.10.150.250/cdn_ttv/SFTP_Root/{{d.attachment}}">File Attachment</a>
+                                            </td>
+                                            <!--begin::Joined-->
+                                            <!--begin::Joined-->
+                                            <td>
+                                                <div class="symbol symbol-50px">
+                                                
+                                                <img src="http://10.10.150.250/cdn_ttv/SFTP_Root/{{d.itempic}}" alt="">
+                                                </div>
+                                            </td>
+                                            <!--begin::Joined-->
+                                               <!--begin::Joined-->
+                                            <td>
+                                                {{d.status}}
+                                            </td>
+                                            <td>
+                                               Loan status
                                             </td>
                                             <!--begin::Joined-->
                                             <!--begin::Action=-->
@@ -772,8 +808,9 @@
                                                          data-kt-menu="true">
                                                               <!--begin::Menu item-->
                                                         <div class="menu-item px-3">
-                                                            <a href="../../demo8/dist/apps/user-management/users/view.html"
-                                                               class="menu-link px-3">Details</a>
+                                                            <a href="{% url 'lab_details' arg='camera' pk=d.id %}"
+                                                               class="menu-link px-3">Details {{d.id}}</a>
+                                                              
                                                         </div>
                                                         <!--end::Menu item-->
                                                         <!--begin::Menu item-->

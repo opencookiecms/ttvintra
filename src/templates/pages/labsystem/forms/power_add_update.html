@@ -32,10 +32,10 @@
                                 <!--begin::Input group-->
                                 <div class="mb-5 fv-row">
                                     <!--begin::Label-->
-                                    <label class="required form-label">Laser Modules</label>
+                                    <label class="required form-label">Powersupply Modules</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    {{ form.lasermodule }}
+                                    {{ form.powermodule }}
                                     <!--end::Input-->
                                     <!--begin::Description-->
                                     <div class="text-muted fs-7">A laser module name.</div>
@@ -117,6 +117,17 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <!--begin::Label-->
+                                        <label class="form-label">Quantity</label>
+                                        <!--end::Label-->
+                                        <!--begin::Editor-->
+                                        {{ form.quantity }}
+                                        <!--end::Editor-->
+                                        <!--begin::Description-->
+                                        <div class="text-muted fs-7">Item Quantity.</div>
+                                        <!--end::Description-->
+                                    </div>
+                                    <div class="col-md-6">
+                                        <!--begin::Label-->
                                         <label class="form-label">Status</label>
                                         <!--end::Label-->
                                         <!--begin::Editor-->
@@ -126,17 +137,7 @@
                                         <div class="text-muted fs-7">Item status.</div>
                                         <!--end::Description-->
                                     </div>
-                                    <div class="col-6">
-                                        <!--begin::Label-->
-                                        <label class="form-label">Quantity</label>
-                                        <!--end::Label-->
-                                        <!--begin::Editor-->
-                                        {{ form.quantity }}
-                                        <!--end::Editor-->
-                                        <!--begin::Description-->
-                                        <div class="text-muted fs-7">Item quantity.</div>
-                                        <!--end::Description-->
-                                    </div>
+                              
                                 </div>
                             </div>
                             <!--end::Input group-->

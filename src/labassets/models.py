@@ -164,7 +164,18 @@ class Misc(models.Model):
     createby = models.CharField(max_length=150, null=True, blank=True)
     createdate = models.DateTimeField(auto_now_add=True, editable=False)
     updatedate = models.DateTimeField(auto_now=True, editable=False)
-    quantity  = models.IntegerField(null=True, blank=True) 
+    quantity  = models.IntegerField(null=True, blank=True)
+
+
+class Loanitem(models.Model):
+    requester = models.CharField(max_length=100, null=True, blank=True) 
+    requestdate = models.DateField(null=True, blank=True)
+    returndate = models.DateField(null=True, blank=True)
+    status = models.CharField(max_length=10, null=True, blank=True) 
+    attachment = models.FileField(upload_to='attachment/loan', storage=fs, null=True, blank=True) 
+    approval = models.CharField(max_length=100, null=True, blank=True)
+
+
 
     
 

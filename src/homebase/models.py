@@ -40,3 +40,6 @@ class ApplicationPerm(models.Model):
 
     def __str__(self):
         return self.userlink.displayname
+
+class Systemsetting(models.Model):
+    ftplink = models.CharField(max_length=300, null=True, blank=True)

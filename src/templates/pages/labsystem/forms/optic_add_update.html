@@ -5,16 +5,16 @@
     <div class="post d-flex flex-column-fluid" id="kt_post">
         <!--begin::Container-->
         <div id="kt_content_container" class="container-xxl">
-            {% if create %}
-                <form id=""action="{% url 'add_card' %}"
-                      method="POST"
-                      class="form d-flex flex-column flex-lg-row"
-                      enctype='multipart/form-data'>
-                {% elif update %}
-                    <form id=""action="{% url 'edit_card' pk=data.pk  %}"
-                          method="POST"
-                          class="form d-flex flex-column flex-lg-row"
-                          enctype='multipart/form-data'>
+                    {% if create %}
+                        <form id=""action="{% url 'add_optic' %}"
+                            method="POST"
+                            class="form d-flex flex-column flex-lg-row"
+                            enctype='multipart/form-data'>
+                    {% elif update %}
+                        <form id=""action="{% url 'edit_optic' pk=data.pk  %}"
+                            method="POST"
+                            class="form d-flex flex-column flex-lg-row"
+                            enctype='multipart/form-data'>
                     {% endif %}
                     <!--begin::Main column-->
                     <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
@@ -32,13 +32,13 @@
                                 <!--begin::Input group-->
                                 <div class="mb-5 fv-row">
                                     <!--begin::Label-->
-                                    <label class="required form-label">Card Modules</label>
+                                    <label class="required form-label">Optic Module</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    {{ form.cardmodule }}
+                                    {{ form.opticmodule  }}
                                     <!--end::Input-->
                                     <!--begin::Description-->
-                                    <div class="text-muted fs-7">A card module name.</div>
+                                    <div class="text-muted fs-7">Optic module name.</div>
                                     <!--end::Description-->
                                 </div>
                                 <!--end::Input group-->
@@ -50,7 +50,7 @@
                                             <label class="form-label">Asset No</label>
                                             <!--end::Label-->
                                             <!--begin::Editor-->
-                                            {{ form.assetno }}
+                                            {{ form.assetno  }}
                                             <!--end::Editor-->
                                             <!--begin::Description-->
                                             <div class="text-muted fs-7">Asset no must be unique.</div>
@@ -64,19 +64,37 @@
                                             {{ form.location }}
                                             <!--end::Editor-->
                                             <!--begin::Description-->
-                                            <div class="text-muted fs-7">Set a description to the category for better visibility.</div>
+                                            <div class="text-muted fs-7">Location of the item was store.</div>
                                             <!--end::Description-->
                                         </div>
                                     </div>
                                 </div>
                                 <!--end::Input group-->
+                                                                <!--begin::Input group-->
+                                                                <div class="mb-5 fv-row">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <!--begin::Label-->
+                                                                            <label class="form-label">Optic types</label>
+                                                                            <!--end::Label-->
+                                                                            <!--begin::Editor-->
+                                                                            {{ form.itemtype   }}
+                                                                            <!--end::Editor-->
+                                                                            <!--begin::Description-->
+                                                                            <div class="text-muted fs-7">Optic type.</div>
+                                                                            <!--end::Description-->
+                                                                        </div>
+                                                               
+                                                                    </div>
+                                                                </div>
+                                                                <!--end::Input group-->
                                 <!--begin::Input group-->
                                 <div>
                                     <!--begin::Label-->
                                     <label class="form-label">Description</label>
                                     <!--end::Label-->
                                     <!--begin::Editor-->
-                                    {{ form.itemdesc }}
+                                    {{ form.itemdesc  }}
                                     <!--end::Editor-->
                                     <!--begin::Description-->
                                     <div class="text-muted fs-7">Set a description to the category for better visibility.</div>
@@ -98,19 +116,7 @@
                             <!--end::Card header-->
                             <!--begin::Card body-->
                             <div class="card-body pt-0">
-                                   <!--begin::Input group-->
-                                <div class="mb-5 fv-row">
-                                    <!--begin::Label-->
-                                    <label class="required form-label">Card Type</label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
-                                    {{ form.itemtype }}
-                                    <!--end::Input-->
-                                    <!--begin::Description-->
-                                    <div class="text-muted fs-7">Type of card.</div>
-                                    <!--end::Description-->
-                                </div>
-                                <!--end::Input group-->
+                       
                             
                                <!--begin::Input group-->
                                <div class="mb-5 fv-row">

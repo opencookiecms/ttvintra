@@ -82,13 +82,14 @@ def table_camera(request):
     table = Camera.objects.all()
     tc = Camera.objects.all().count()
 
+
     context = {
         'tab':table,
         'tc':tc,
         'cv':True,
     }
 
-    return render(request,'pages/labsystem/camera_allv.html',context)
+    return render(request,'pages/labsystem/camera_all_views.html',context)
 
 
 #lens section
@@ -129,6 +130,18 @@ def edit_lens(request, pk):
 
     return render(request, 'pages/labsystem/forms/lens_add_update.html',context)
 
+def table_lens(request):
+    table = Lens.objects.all()
+    ti = Lens.objects.all().count()
+
+    context = {
+        'tab':table,
+        'ti':ti,
+        'lv':True,
+    }
+
+    return render(request,'pages/labsystem/lens_all_views.html',context)
+
 
 #lighting controller section
 def add_lightingcontroller(request):
@@ -167,6 +180,18 @@ def edit_lightingcontroller(request, pk):
     }
 
     return render(request, 'pages/labsystem/forms/lightingcontroller_add_update.html',context)
+
+def table_lightingcontroller(request):
+    table = LightingCon.objects.all()
+    ti = LightingCon.objects.all().count()
+
+    context = {
+        'tab':table,
+        'ti':ti,
+        'lcv':True,
+    }
+
+    return render(request,'pages/labsystem/lc_all_views.html',context)
 
 #lighting section
 def add_lighting(request):
@@ -207,6 +232,19 @@ def edit_lighting(request, pk):
     return render(request, 'pages/labsystem/forms/lighting_add_update.html',context)
 
 
+def table_lighting(request):
+    table = Lighting.objects.all()
+    ti = Lighting.objects.all().count()
+
+    context = {
+        'tab':table,
+        'ti':ti,
+        'lg':True,
+    }
+
+    return render(request,'pages/labsystem/lg_all_views.html',context)
+
+
 #laser section
 def add_laser(request):
 
@@ -244,6 +282,18 @@ def edit_laser(request, pk):
     }
 
     return render(request, 'pages/labsystem/forms/laser_add_update.html',context)
+
+def table_laser(request):
+    table = Laser.objects.all()
+    ti = Laser.objects.all().count()
+
+    context = {
+        'tab':table,
+        'ti':ti,
+        'ls':True,
+    }
+
+    return render(request,'pages/labsystem/ls_all_views.html',context)
 
 
 #power supply section
@@ -284,6 +334,19 @@ def edit_power(request, pk):
 
     return render(request, 'pages/labsystem/forms/power_add_update.html',context)
 
+def table_power(request):
+    table = Powersupply.objects.all()
+    ti = Powersupply.objects.all().count()
+
+    context = {
+        'tab':table,
+        'ti':ti,
+        'pwr':True,
+    }
+
+    return render(request,'pages/labsystem/pwr_all_views.html',context)
+
+
 
 #cable section
 def add_cable(request):
@@ -323,6 +386,18 @@ def edit_cable(request, pk):
 
     return render(request, 'pages/labsystem/forms/cable_add_update.html',context)
 
+def table_cable(request):
+    table = Cable.objects.all()
+    ti = Cable.objects.all().count()
+
+    context = {
+        'tab':table,
+        'ti':ti,
+        'cbl':True,
+    }
+
+    return render(request,'pages/labsystem/cable_all_views.html',context)
+
 #card section
 def add_card(request):
 
@@ -360,6 +435,18 @@ def edit_card(request, pk):
     }
 
     return render(request, 'pages/labsystem/forms/card_add_update.html',context)
+
+def table_card(request):
+    table = Card.objects.all()
+    ti = Card.objects.all().count()
+
+    context = {
+        'tab':table,
+        'ti':ti,
+        'card':True,
+    }
+
+    return render(request,'pages/labsystem/card_all_views.html',context)
 
 
 #CAL. Target section
@@ -399,3 +486,190 @@ def edit_cal(request, pk):
     }
 
     return render(request, 'pages/labsystem/forms/cal_add_update.html',context)
+
+
+
+def table_cal(request):
+    table = Caltarget.objects.all()
+    ti = Caltarget.objects.all().count()
+
+    context = {
+        'tab':table,
+        'ti':ti,
+        'cal':True,
+    }
+
+    return render(request,'pages/labsystem/cal_all_views.html',context)
+
+#Optic 
+def add_optic(request):
+    
+    form = OpticForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+        form = OpticForm()
+    else:
+        print('unable to complie unit error')
+        print(form.errors)
+    
+    context = {
+        'form':form,
+        'create':True,
+    }
+
+    return render(request, 'pages/labsystem/forms/optic_add_update.html',context)
+
+
+def edit_optic(request, pk):
+
+    objectdata = Optic.objects.get(pk=pk)
+    form = OpticForm(request.POST or None, request.FILES or None, instance=objectdata)
+
+    if form.is_valid():
+        form.save()
+
+    else:
+        print(form.errors)
+        print('unable to update this data')
+
+    context = {
+        'form':form,
+        'update':True,
+        'data':objectdata,
+    }
+
+    return render(request, 'pages/labsystem/forms/optic_add_update.html',context)
+
+
+def table_optic(request):
+    table = Optic.objects.all()
+    ti = Optic.objects.all().count()
+
+    context = {
+        'tab':table,
+        'ti':ti,
+        'optic':True,
+    }
+
+    return render(request,'pages/labsystem/optic_all_views.html',context)
+
+
+
+#MISC 
+def add_misc(request):
+    
+    form = Miscform(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+        form = Miscform()
+    else:
+        print('unable to complie unit error')
+        print(form.errors)
+    
+    context = {
+        'form':form,
+        'create':True,
+    }
+
+    return render(request, 'pages/labsystem/forms/misc_add_update.html',context)
+
+
+def edit_misc(request, pk):
+
+    objectdata = Misc.objects.get(pk=pk)
+    form = Miscform(request.POST or None, request.FILES or None, instance=objectdata)
+
+    if form.is_valid():
+        form.save()
+
+    else:
+        print(form.errors)
+        print('unable to update this data')
+
+    context = {
+        'form':form,
+        'update':True,
+        'data':objectdata,
+    }
+
+    return render(request, 'pages/labsystem/forms/misc_add_update.html',context)
+
+def table_misc(request):
+    table = Misc.objects.all()
+    ti = Misc.objects.all().count()
+    ftable = Misc.objects.all()
+
+    context = {
+        'tab':table,
+        'ti':ti,
+        'misc':True,
+    }
+
+    return render(request,'pages/labsystem/misc_all_views.html',context)
+
+
+def lab_details(request,arg,pk):
+
+    
+    print(pk)
+    if arg == "camera":
+        item = Camera.objects.filter(pk=pk).first()
+        title="Camera Detail"
+        template = 'camera_details.html'
+
+    elif arg == "lens":
+        item = Lens.objects.filter(pk=pk).first()
+        title="Lens Detail"
+        template = 'lens_details.html'
+
+    elif arg == "lightcontroller":
+        item = LightingCon.objects.filter(pk=pk).first()
+        title="Lighting controller Details"
+        template = 'lc_details.html'
+        
+    elif arg == "lighting":
+        item = Lighting.objects.filter(pk=pk).first()
+        title="Lighting Detail"
+        template = 'lighting_details.html'
+
+    elif arg == "laser":
+        item = Laser.objects.filter(pk=pk).first()
+        title="Laser Detail"
+        template = 'laser_details.html'
+
+    elif arg == "powersupply":
+        item = Powersupply.objects.filter(pk=pk).first()
+        title="Power Supply Detail"
+        template = 'power_details.html'
+
+    elif arg == "cable":
+        item = Cable.objects.filter(pk=pk).first()
+        title="Cable Detail"
+        template = 'cable_details.html'
+
+    elif arg == "card":
+        item = Card.objects.filter(pk=pk).first()
+        title="Card Detail"
+        template = 'card_details.html'
+
+    elif arg == "caltarget":
+        item = Caltarget.objects.filter(pk=pk).first()
+        title="Cal Target Detail"
+        template = 'cal_details.html'
+
+    elif arg == "optic":
+        item = Optic.objects.filter(pk=pk).first()
+        title="Optic Detail"
+        template = 'optic_details.html'
+
+    elif arg == "misc":
+        item = Misc.objects.filter(pk=pk).first()
+        title="Misc Detail"
+        template = 'misc_details.html'
+
+    context = {
+        'item':item,
+        'title':title,
+    }
+    return render(request,'pages/labsystem/'+template,context)
+   

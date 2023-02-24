@@ -7,9 +7,9 @@
     <!--begin::Container-->
     <div id="kt_content_container" class="container-xxl">
         {% if create %}
-        <form id=""action="{% url 'add_lightcon' %}" method="POST" class="form d-flex flex-column flex-lg-row" enctype='multipart/form-data'>
+        <form id=""action="{% url 'add_lightingcontroller' %}" method="POST" class="form d-flex flex-column flex-lg-row" enctype='multipart/form-data'>
         {% elif update %}
-        <form id=""action="{% url 'edit_lightcon' pk=data.pk  %}" method="POST" class="form d-flex flex-column flex-lg-row" enctype='multipart/form-data'>
+        <form id=""action="{% url 'edit_lightingcontroller' pk=data.pk  %}" method="POST" class="form d-flex flex-column flex-lg-row" enctype='multipart/form-data'>
         {% endif %}
          
         
@@ -32,7 +32,7 @@
                             <label class="required form-label">Lighting Controller Modules</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            {{form.lensemodule}}
+                            {{form.lightconmodule}}
                             <!--end::Input-->
                             <!--begin::Description-->
                             <div class="text-muted fs-7">A lens module.</div>
@@ -96,55 +96,7 @@
                     <!--end::Card header-->
                     <!--begin::Card body-->
                     <div class="card-body pt-0">
-                      
-                        <!--begin::Input group-->
-                        <div class="mb-5 fv-row">
-                            <div class="row">
-                                <div class=col-md-12>
-                            <!--begin::Label-->
-                            <label class="form-label">Item Type</label>
-                            <!--end::Label-->
-                            <!--begin::Editor-->
-                            {{form.typeitem}}
-                            <!--end::Editor-->
-                            <!--begin::Description-->
-                            <div class="text-muted fs-7">Item type of the product.</div>
-                            <!--end::Description-->
-                                </div>
-                           
-                            </div>
-                        </div>
-                        <!--end::Input group-->
-
-                         <!--begin::Input group-->
-                         <div class="mb-5 fv-row">
-                            <div class="row">
-                                <div class=col-md-6>
-                            <!--begin::Label-->
-                            <label class="form-label">Focal Length</label>
-                            <!--end::Label-->
-                            <!--begin::Editor-->
-                            {{form.focallength}}
-                            <!--end::Editor-->
-                            <!--begin::Description-->
-                            <div class="text-muted fs-7">Item type of the product.</div>
-                            <!--end::Description-->
-                                </div>
-                                <div class=col-md-6>
-                                    <!--begin::Label-->
-                                    <label class="form-label">Mounting Type</label>
-                                    <!--end::Label-->
-                                    <!--begin::Editor-->
-                                    {{form.mountingtype}}
-                                    <!--end::Editor-->
-                                    <!--begin::Description-->
-                                    <div class="text-muted fs-7">Type of mounting.</div>
-                                    <!--end::Description-->
-                                        </div>
-                            </div>
-                        </div>
-                        <!--end::Input group-->
-                    
+                                  
                            <!--begin::Input group-->
                            <div>
                             <!--begin::Label-->
