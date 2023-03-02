@@ -2,7 +2,7 @@
 						{% extends "based/based.html" %}
                         {% block content %}
                         {% load static %}
-                        						<!--begin::Post-->
+                        <!--begin::Post-->
 						<div class="post d-flex flex-column-fluid" id="kt_post">
 							<!--begin::Container-->
 							<div id="kt_content_container" class="container-xxl">
@@ -268,7 +268,7 @@
 											<!--end::Info-->
 										</div>
 										<!--end::Details-->
-										<!--begin::Navs-->
+										{% comment %} <!--begin::Navs-->
 										<ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold">
 											<!--begin::Nav item-->
 											<li class="nav-item mt-2">
@@ -301,12 +301,12 @@
 											</li>
 											<!--end::Nav item-->
 										</ul>
-										<!--begin::Navs-->
+										<!--begin::Navs--> {% endcomment %}
 									</div>
 								</div>
 								<!--end::Navbar-->
 								<!--begin::Timeline-->
-								<div class="card">
+								{% comment %} <div class="card">
 									<!--begin::Card head-->
 									<div class="card-header card-header-stretch">
 										<!--begin::Title-->
@@ -1990,7 +1990,7 @@
 									</div>
 									<!--end::Card body-->
 								</div>
-								<!--end::Timeline-->
+								<!--end::Timeline--> {% endcomment %}
 							</div>
 							<!--end::Container-->
 						</div>
